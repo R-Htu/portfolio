@@ -1,0 +1,107 @@
+/* ═══════════════════════════
+   DARK THEME
+═══════════════════════════ */
+:root,
+[data-theme="dark"] {
+  --void: #02050a;
+  --deep: #040c12;
+  --forest: #050f0a;
+  --teal: #00d4cc;
+  --gln: rgba(0, 255, 135, 0.1);
+  --gcl: rgba(0, 212, 204, 0.1);
+  --text: #c8e8d8;
+  --seam:#0f2318;
+  --nav-bg:rgba(2,5,10,0.97);
+   --moss:#00ff87;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: "Crimson Pro", Georgia, serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition:
+    background 0.4s,
+    color 0.4s;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--gln) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gcl) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+/* ═══════════════════════════
+   NAV
+═══════════════════════════ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 13px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background:rgba(0, 212, 204, 0.01);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--seam);
+  transition: all 0.3s;
+}
+.nav-logo {
+  font-family: "Cinzel", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--moss);
+  letter-spacing: 0.2em;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--moss);
+  transition: width 0.3s;
+}
+.nav-links a:hover {
+  color: var(--moss);
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
