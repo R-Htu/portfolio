@@ -700,7 +700,7 @@ section {
    HERO RESPONSIVE
 ═══════════════════════════ */
 
-/* ── Tablet: tighten columns ── */
+/* ── Tablet ── */
 @media (max-width: 860px) {
   .hero-inner {
     grid-template-columns: 1fr 1fr;
@@ -712,28 +712,49 @@ section {
   }
 }
 
-/* ── Mobile: stack vertically, orb first ── */
+/* ── Mobile ── */
 @media (max-width: 600px) {
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 0;
     padding: 24px 0;
+    
   }
 
-  /* Move orb above the text */
   .hero-visual {
     order: -1;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
+    width: 100%;
+    position: relative
   }
 
+  /* Keep orb-wrap exactly as it is — do NOT change display or flex on it */
   .orb-wrap {
-    width: 170px;
-    height: 170px;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 18px;
+    flex-shrink: 0;
+    /* this is critical — keep position:relative for the rings inside */
+    position: relative;
   }
 
-  /* Hide the hdata labels — too cramped */
+  /* Both hdata blocks: pull out of absolute, into a flex row below the orb */
   .hdata {
-    display: none;
+    position: absolute;
+    font-size: 0.68rem;
+    line-height: 1.9;
+    width: 100%;
+  }
+
+  .hdata.tl {
+    top: 10%;
+    left: 20%;
+    order: 2;
+  }
+
+  .hdata.br {
+    top: 35%;
+    right: 20%; 
   }
 
   .hero-desc {
@@ -741,18 +762,21 @@ section {
   }
 }
 
-/* ── XS: trim even further ── */
 @media (max-width: 400px) {
-  .hero-inner {
-    padding: 16px 0;
-  }
-
   .orb-wrap {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
   }
 
   .orb-core {
-    inset: 48px;
+    inset: 42px;
+  }
+
+  .hdata {
+    font-size: 0.62rem;
+  }
+
+  .hdata.br {
+    margin-top: -3.5em;
   }
 }
