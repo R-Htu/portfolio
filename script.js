@@ -13,6 +13,22 @@ function toggleTheme(){
   document.getElementById('themeBtn').textContent=s==='light'?'[*]':'[~~]';
 })();
 
+/* ── MOBILE NAV ── */
+function toggleMenu(){
+  const d=document.getElementById('drawer'),b=document.getElementById('burger');
+  const o=d.classList.toggle('open');
+  b.classList.toggle('open',o);
+  document.body.style.overflow=o?'hidden':'';
+}
+function closeMenu(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('click',e=>{
+  const d=document.getElementById('drawer'),b=document.getElementById('burger');
+  if(d.classList.contains('open')&&!d.contains(e.target)&&!b.contains(e.target))closeMenu();
+});
 /* ── I feel like wanna give up on Math lol when learning how to make FIREFLIES ── */
 const cv=document.getElementById('canvas'),ctx=cv.getContext('2d');
 let W,H,particles=[],mouse={x:null,y:null};

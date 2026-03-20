@@ -27,8 +27,45 @@
       </ul>
       <div class="nav-right">
         <a href="#courses" class="nav-cta">[*] Start Courses</a>
+            <button class="sigil-btn" id="burger" onclick="toggleMenu()" aria-label="Menu" title="Menu">
+      <!-- CLOSED: alien sigil / 6-point star-of-code -->
+      <svg class="s-closed" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- outer hexagon ring -->
+        <polygon points="13,2 22,7.5 22,18.5 13,24 4,18.5 4,7.5" stroke="var(--moss)" stroke-width="1" fill="none" opacity="0.5"/>
+        <!-- inner cross lines -->
+        <line x1="13" y1="4" x2="13" y2="22" stroke="var(--moss)" stroke-width="1" opacity="0.35"/>
+        <line x1="4.5" y1="8.5" x2="21.5" y2="17.5" stroke="var(--moss)" stroke-width="1" opacity="0.35"/>
+        <line x1="21.5" y1="8.5" x2="4.5" y2="17.5" stroke="var(--moss)" stroke-width="1" opacity="0.35"/>
+        <!-- center diamond -->
+        <polygon points="13,8 17.5,13 13,18 8.5,13" stroke="var(--moss)" stroke-width="1.2" fill="rgba(0,255,135,0.08)"/>
+        <!-- center dot -->
+        <circle cx="13" cy="13" r="1.8" fill="var(--moss)"/>
+        <!-- corner sparks -->
+        <circle cx="13" cy="2.5" r="1" fill="var(--teal)" opacity="0.7"/>
+        <circle cx="22" cy="7.5" r="1" fill="var(--teal)" opacity="0.7"/>
+        <circle cx="22" cy="18.5" r="1" fill="var(--teal)" opacity="0.7"/>
+        <circle cx="13" cy="23.5" r="1" fill="var(--teal)" opacity="0.7"/>
+        <circle cx="4" cy="18.5" r="1" fill="var(--teal)" opacity="0.7"/>
+        <circle cx="4" cy="7.5" r="1" fill="var(--teal)" opacity="0.7"/>
+      </svg>
+      <!-- OPEN: X / close rune -->
+      <svg class="s-open" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="10" stroke="var(--moss)" stroke-width="1" fill="none" opacity="0.4"/>
+        <line x1="8" y1="8" x2="18" y2="18" stroke="var(--moss)" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="18" y1="8" x2="8" y2="18" stroke="var(--moss)" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="13" cy="13" r="2" fill="rgba(0,255,135,0.2)" stroke="var(--moss)" stroke-width="1"/>
+      </svg>
+    </button>
       </div>
     </nav>
+    <div class="nav-drawer" id="drawer">
+  <a href="#about"      onclick="closeMenu()">My Story</a>
+  <a href="#courses"    onclick="closeMenu()">Courses</a>
+  <a href="#life"       onclick="closeMenu()">Life</a>
+  <a href="#skills"     onclick="closeMenu()">Learning</a>
+  <a href="#philosophy" onclick="closeMenu()">Discussion</a>
+  <a href="#gallery"    onclick="closeMenu()">Gallery</a>
+</div>
 
     <main>
       <!-- ╔══ HERO ══╗ -->
