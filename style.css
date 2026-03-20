@@ -696,3 +696,63 @@ section {
 .hdata .v {
   color: var(--teal);
 }
+/* ═══════════════════════════
+   HERO RESPONSIVE
+═══════════════════════════ */
+
+/* ── Tablet: tighten columns ── */
+@media (max-width: 860px) {
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .orb-wrap {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* ── Mobile: stack vertically, orb first ── */
+@media (max-width: 600px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 24px 0;
+  }
+
+  /* Move orb above the text */
+  .hero-visual {
+    order: -1;
+    margin-bottom: 28px;
+  }
+
+  .orb-wrap {
+    width: 170px;
+    height: 170px;
+  }
+
+  /* Hide the hdata labels — too cramped */
+  .hdata {
+    display: none;
+  }
+
+  .hero-desc {
+    max-width: 100%;
+  }
+}
+
+/* ── XS: trim even further ── */
+@media (max-width: 400px) {
+  .hero-inner {
+    padding: 16px 0;
+  }
+
+  .orb-wrap {
+    width: 140px;
+    height: 140px;
+  }
+
+  .orb-core {
+    inset: 48px;
+  }
+}
