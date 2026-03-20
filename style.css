@@ -19,8 +19,11 @@
   --wire: #143020;
   --dim: #abafab;
   --glow: #00e5a0;
-  --orb-a: rgba(0, 255, 135, 0.18);
-  --orb-b: rgba(0, 212, 204, 0.1);
+  --orb-border: rgba(0, 255, 135, 0.17);
+  --orb-ring-a: rgba(0, 255, 135, 0.14);
+  --orb-ring-b: rgba(0, 212, 204, 0.11);
+  --orb-ring-c: rgba(0, 255, 135, 0.07);
+  --ascii-c: #3a6e50;
 }
 
 /* ═══════════════════════════
@@ -43,8 +46,14 @@
   --wire: #a0cbb4;
   --dim: #0d2018;
   --glow: #009650;
-  --orb-a: rgba(0, 120, 64, 0.14);
-  --orb-b: rgba(0, 110, 110, 0.08);
+  --orb-border: rgba(3, 27, 17, 0.95);
+  --orb-ring-a: rgba(33, 60, 47, 0.95);
+  --orb-ring-b: rgba(17, 30, 30, 0.92);
+  --orb-ring-c: rgba(25, 27, 26, 0.93);
+  --ascii-c: #2a6040;
+    --orb-a: rgba(0, 100, 60, 0.18);
+  --orb-b: rgba(0, 110, 110, 0.14);
+  --orb-core-bg: rgba(8, 239, 155, 0.6);
 }
 
 *,
@@ -615,16 +624,25 @@ section {
   border: 1px solid rgba(0, 255, 135, 0.14);
   animation: spinSlow 20s linear infinite;
 }
+[data-theme="light"] .orb-ring {
+  border-color: rgba(0, 120, 64, 0.25);
+}
 .orb-ring:nth-child(2) {
   inset: 22px;
   border-color: rgba(0, 212, 204, 0.11);
   animation-duration: 14s;
   animation-direction: reverse;
 }
+[data-theme="light"] .orb-ring:nth-child(2) {
+  border-color:  rgba(0, 120, 64, 0.25);
+}
 .orb-ring:nth-child(3) {
   inset: 44px;
   border-color: rgba(0, 255, 135, 0.07);
   animation-duration: 28s;
+}
+[data-theme="light"] .orb-ring:nth-child(3) {
+  border-color: rgba(0, 120, 64, 0.25);
 }
 .orb-ring::before {
   content: "";
@@ -723,7 +741,7 @@ section {
 
   .hero-visual {
     order: -1;
-    margin-bottom: 32px;
+    margin: 32px;
     width: 100%;
     position: relative
   }
