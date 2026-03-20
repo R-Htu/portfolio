@@ -11,13 +11,38 @@
   --gcl: rgba(0, 212, 204, 0.1);
   --text: #c8e8d8;
   --seam: #0f2318;
+  --card: #0a1510;
+  --shadow: rgba(0, 0, 0, 0.5);
   --nav-bg: rgba(2, 5, 10, 0.97);
   --moss: #00ff87;
   --muted: #3a6e50;
   --wire: #143020;
   --dim: #abafab;
-  --wire:#1430;
-  --glow:#00e5a0;
+  --wire: #1430;
+  --glow: #00e5a0;
+}
+
+/* ═══════════════════════════
+   LIGHT THEME — SUNLIT GARDEN
+═══════════════════════════ */
+[data-theme="light"] {
+  --void: #f0f7f4;
+  --deep: #e6f2ec;
+  --forest: #eaf5ee;
+  --teal: #007070;
+  --gln: rgba(0, 120, 64, 0.045);
+  --gcl: rgba(0, 110, 110, 0.03);
+  --text: #1a3a2a;
+  --seam: #c8e6d4;
+  --card: #ffffff;
+  --shadow: rgba(0, 50, 30, 0.12);
+  --nav-bg: rgba(240, 247, 244, 0.97);
+  --moss: #007a40;
+  --muted: #4a7a60;
+  --wire: #a0cbb4;
+  --dim: #0d2018;
+  --wire: #a0cbb4;
+  --glow: #009650;
 }
 
 *,
@@ -37,6 +62,7 @@ body {
   font-family: "Crimson Pro", Georgia, serif;
   overflow-x: hidden;
   min-height: 100vh;
+  cursor: crosshair;
   transition:
     background 0.4s,
     color 0.4s;
@@ -54,6 +80,41 @@ body::after {
   pointer-events: none;
 }
 
+#canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════
+   THEME TOGGLE
+═══════════════════════════ */
+#themeBtn {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  background: var(--card);
+  border: 1px solid var(--seam);
+  color: var(--moss);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.86rem;
+  cursor: crosshair;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px var(--shadow);
+  transition: all 0.3s;
+  letter-spacing: 0.04em;
+}
+#themeBtn:hover {
+  border-color: var(--moss);
+  box-shadow: 0 0 18px rgba(0, 255, 135, 0.2);
+  transform: scale(1.05);
+}
 /* ═══════════════════════════
    NAV
 ═══════════════════════════ */
@@ -83,6 +144,10 @@ nav {
 
 [data-theme="dark"] .nav-logo {
   animation: gPulse 4s infinite;
+}
+
+[data-theme="light"] .nav-logo {
+  animation: gPulseL 4s infinite;
 }
 .nav-links {
   display: flex;
@@ -222,6 +287,10 @@ section {
 [data-theme="dark"] .hero-name .glow {
   color: var(--moss);
   animation: gPulse 3s infinite;
+}
+[data-theme="light"] .hero-name .glow {
+  color: var(--moss);
+  animation: gPulseL 3s infinite;
 }
 .hero-strip {
   font-family: "Share Tech Mono", monospace;
