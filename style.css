@@ -20,10 +20,10 @@
   --dim: #abafab;
   --glow: #00e5a0;
   --orb-border: rgba(0, 255, 135, 0.17);
-  --orb-ring-a: rgba(0, 255, 135, 0.14);
-  --orb-ring-b: rgba(0, 212, 204, 0.11);
-  --orb-ring-c: rgba(0, 255, 135, 0.07);
-  --ascii-c: #3a6e50;
+  --orb-a: rgba(0, 255, 135, 0.18);
+  --orb-b: rgba(0, 212, 204, 0.1);
+  --scan: rgba(0, 255, 135, 0.35);
+  --ascii-c: rgba(0, 255, 135, 0.28);
 }
 
 /* ═══════════════════════════
@@ -50,10 +50,10 @@
   --orb-ring-a: rgba(33, 60, 47, 0.95);
   --orb-ring-b: rgba(17, 30, 30, 0.92);
   --orb-ring-c: rgba(25, 27, 26, 0.93);
-  --ascii-c: #2a6040;
-    --orb-a: rgba(0, 100, 60, 0.18);
-  --orb-b: rgba(0, 110, 110, 0.14);
-  --orb-core-bg: rgba(8, 239, 155, 0.6);
+  --orb-a: rgba(0, 120, 64, 0.14);
+  --orb-b: rgba(0, 110, 110, 0.08);
+  --scan: rgba(0, 122, 64, 0.28);
+  --ascii-c: rgba(0, 120, 64, 0.35);
 }
 
 *,
@@ -461,6 +461,7 @@ section {
   margin: 0 5px;
 }
 .hero-desc {
+   font-family: "Smooch Sans", sans-serif;
   font-size: 1.22rem;
   line-height: 1.95;
   color: var(--text);
@@ -634,7 +635,7 @@ section {
   animation-direction: reverse;
 }
 [data-theme="light"] .orb-ring:nth-child(2) {
-  border-color:  rgba(0, 120, 64, 0.25);
+  border-color: rgba(0, 120, 64, 0.25);
 }
 .orb-ring:nth-child(3) {
   inset: 44px;
@@ -736,14 +737,13 @@ section {
     grid-template-columns: 1fr;
     gap: 0;
     padding: 24px 0;
-    
   }
 
   .hero-visual {
     order: -1;
     margin: 32px;
     width: 100%;
-    position: relative
+    position: relative;
   }
 
   /* Keep orb-wrap exactly as it is — do NOT change display or flex on it */
@@ -766,13 +766,13 @@ section {
 
   .hdata.tl {
     top: 10%;
-    left: 20%;
+    left: 15%;
     order: 2;
   }
 
   .hdata.br {
     top: 35%;
-    right: 20%; 
+    right: 20%;
   }
 
   .hero-desc {
@@ -792,6 +792,11 @@ section {
 
   .hdata {
     font-size: 0.62rem;
+  }
+
+.hdata.tl {
+    left: 10%;
+ 
   }
 
   .hdata.br {
