@@ -81,7 +81,7 @@ class Fly{//each fly is a particle with its own properties and movement logic
 }
 function buildParticles(){ //build the particles array based on the current theme, with a number of flies determined by the screen size to maintain performance, and each fly initialized with the init parameter to start from the edges and fly towards the center when the theme changes
   particles=[];//number of flies is based on screen size, with a cap of 85 to prevent too many flies on very large screens which can affect performance, and a minimum of 10 to ensure there are enough flies on smaller screens to create the effect
-  const n=Math.min(Math.floor(W*H/13000),85);//calculate number of flies based on screen area, with a cap of 85 for performance
+  const n=Math.min(Math.floor(W*H/13000),95);//calculate number of flies based on screen area, with a cap of 85 for performance
   for(let i=0;i<n;i++)particles.push(new Fly(true));//create new flies with init=true to start from edges and fly towards center on theme change
 }
 buildParticles();//initial build of particles when page loads, with init=true to have them fly in from edges towards center
