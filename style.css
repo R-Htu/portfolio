@@ -1155,12 +1155,18 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-weight: bolder;
 }
 .hero-eyebrow::before {
   content: "";
   width: 26px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--moss));
+}
+[data-theme ="light"] .hero-eyebrow::before {
+    background: linear-gradient(90deg, transparent,rgb(0, 45, 0));
+    box-shadow: #02050a;
+  
 }
 .hero-name {
   font-family: "Cinzel", serif;
@@ -1551,7 +1557,7 @@ section {
     margin: 0 auto;
     width: 100%;
     position: relative;
-    min-height: 250px;
+    min-height: 350px;
   }
 
   .orb-wrap {
@@ -1591,11 +1597,14 @@ section {
   .nav-logo {
     font-size: 0.9rem;
   }
+  .hero-visual {
+    min-height: 400px;
+  }
 
   .orb-wrap {
-    width: 130px;
-    height: 130px;
-    margin-top: 13%;
+    width: 150px;
+    height: 150px;
+    margin:30% auto 10% auto;
   }
 
   .orb-core {
@@ -1603,13 +1612,13 @@ section {
   }
 
   .hdata.tl {
-    top: 19%;
-    left: 1%;
+    top: 29%;
+    left: 4%;
   }
 
   .hdata.br {
-    top: 47%;
-    right: 3%;
+    top: 59%;
+    right: 4%;
     text-align: right;
   }
 
