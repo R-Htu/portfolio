@@ -362,7 +362,8 @@ section {
   gap: 56px;
   align-items: center;
   width: 100%;
-  padding: 36px 0;
+  padding: 36px 0 50px 0;
+  ;
 }
 
 @keyframes fadeUp {
@@ -579,10 +580,7 @@ section {
   .hero-desc {
     font-size: 1.08rem;
   }
-  .hero-btns {
-    flex-direction: column;
-    gap: 9px;
-  }
+  
   .btn-p,
   .btn-g {
     text-align: center;
@@ -736,10 +734,10 @@ section {
 }
 .hdata.tl {
   top: 16px;
-  left: 8px;
+  left: -10px;
 }
 .hdata.br {
-  bottom: 16px;
+  top: 60%;
   right: 8px;
   text-align: right;
 }
@@ -793,16 +791,17 @@ section {
     font-size: 0.68rem;
     line-height: 1.9;
     width: 100%;
+   
   }
 
   .hdata.tl {
     top: 10%;
-    left: 15%;
+    left: 12%;
     order: 2;
   }
 
   .hdata.br {
-    top: 35%;
+    top: 65%;
     right: 20%;
   }
 
@@ -831,6 +830,10 @@ section {
   }
 
   .hdata.br {
-    margin-top: -3.5em;
+    margin-top: -20rem;
+  }
+  .hero-btns .btn-g .btn-p {
+    font-size: 0.6rem;
+    padding: 3px 6px;
   }
 }
