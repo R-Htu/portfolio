@@ -44,12 +44,12 @@ function getPalette(){
 }
 class Fly{//each fly is a particle with its own properties and movement logic
   constructor(init){//init is true when building particles on theme change, so flies start from random edge and fly towards center, otherwise they start from their base position which is randomly set to be within the screen or just outside the left or right edge, so they fly in from left or right when first loaded
-    this.bx=init?Math.random()*W:(Math.random()<.5?-40:W+40);//base position of the fly, where it’s pulled towards and orbits around, starts off screen if not init to fly in from left or right
+    this.bx=init?Math.random()*W:(Math.random()<.5?-70:W+70);//base position of the fly, where it’s pulled towards and orbits around, starts off screen if not init to fly in from left or right
     this.by=Math.random()*H;//base position of the fly, where it’s pulled towards and orbits around
     this.x=this.bx;this.y=this.by;//current position of the fly, starts at base position
     this.sz=Math.random()*1.4+.3;//size of the fly
     this.al=Math.random()*.45+.08;//alpha
-    this.sp=Math.random()*.28+.05;//speed
+    this.sp=Math.random()*.28+.05;//speed means how fast the fly moves through its circular path, with a minimum speed to ensure movement and a range to add variety between flies
     this.ang=Math.random()*Math.PI*2;//direction angle in radians(0 to 2PI)
     this.asp=(Math.random()-.5)*.013;//angle speed or swy left and right
     this.rad=Math.random()*52+16;//radius of the fly's circular movement
