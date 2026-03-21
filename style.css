@@ -217,6 +217,9 @@ nav::after {
   pointer-events: none;
   z-index: 10;
 }
+[data-theme="light"] nav::after {
+  background: linear-gradient(transparent, rgba(110, 121, 116, 0.1), transparent);
+}
 .nav-topbar {
   position: relative;
   height: 2px;
@@ -228,6 +231,19 @@ nav::after {
     var(--teal) 50%,
     var(--moss) 60%,
     rgba(0, 255, 135, 0.15) 85%,
+    transparent 100%
+  );
+}
+
+[data-theme="light"] .nav-topbar {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(20, 20, 20, 0.1) 15%,
+    var(--moss) 40%,
+    var(--teal) 50%,
+    var(--moss) 60%,
+    rgba(4, 56, 33, 0.1) 85%,
     transparent 100%
   );
 }
@@ -243,6 +259,12 @@ nav::after {
   animation: cornerBlink 2.5s ease-in-out infinite;
   background: var(--void);
 }
+
+[data-theme="light"] .nav-topbar::before,
+[data-theme="light"] .nav-topbar::after {
+  border-color: var(--moss);
+}
+
 .nav-topbar::before {
   left: 18px;
 }
@@ -293,6 +315,10 @@ nav::after {
   animation: nodeOrbit 3s linear infinite;
   box-shadow: 0 0 6px var(--teal);
 }
+[data-theme="light"] .hex-orbit-dot {
+  background:var(--teal);
+  box-shadow: 0 0 6px var(--forest);
+}
 .nav-logo-wordmark {
   position: relative;
 }
@@ -306,7 +332,7 @@ nav::after {
   display: block;
 }
 .nav-logo-text span {
-  color: var(--teal);
+  color: var(--forest);
 }
 .nav-logo-sub {
   font-family: "Share Tech Mono", monospace;
@@ -318,7 +344,7 @@ nav::after {
   margin-top: 1px;
 }
 [data-theme="light"] .nav-logo-sub {
-  color: rgba(0, 112, 112, 0.5);
+  color: rgb(13, 30, 8);
 }
 
 /* ── center links ── */
@@ -340,6 +366,14 @@ nav::after {
     90deg,
     transparent,
     rgba(0, 255, 135, 0.15),
+    transparent
+  );
+}
+[data-theme="light"] .nav-links::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--teal),
     transparent
   );
 }
@@ -369,6 +403,10 @@ nav::after {
   text-transform: uppercase;
   transition: color 0.2s;
   position: relative;
+  font-weight: 700;
+}
+[data-theme="light"] .nav-link-item a {
+  color: var(--moss);
 }
 .nav-link-item a::before {
   content: ">>";
@@ -393,6 +431,9 @@ nav::after {
 }
 .nav-link-item a:hover {
   color: var(--moss);
+}
+[data-theme="light"] .nav-link-item a:hover {
+  color: var(--glow);
 }
 .nav-link-item a:hover::before {
   opacity: 1;
@@ -430,14 +471,23 @@ nav::after {
   border: 1px solid rgba(0, 255, 135, 0.12);
   position: relative;
 }
+[data-theme="light"] .nav-status {
+  color: rgba(0, 120, 64, 0.9);
+  border-color: rgba(0, 122, 64, 0.2);
+}
 .nav-status::before,
 .nav-status::after {
   content: "";
   position: absolute;
   width: 4px;
   height: 4px;
-  border: 1px solid rgba(0, 255, 135, 0.35);
+  border: 1px solid rgba(6, 245, 133, 0.95);
 }
+[data-theme="light"] .nav-status::before,
+[data-theme="light"] .nav-status::after {
+  border-color: var(--teal);
+}
+
 .nav-status::before {
   top: -1px;
   left: -1px;
@@ -492,7 +542,7 @@ nav::after {
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.4),
     transparent
   );
   transform: translateX(-100%);
@@ -522,9 +572,16 @@ nav::after {
   color: rgba(0, 255, 135, 0.2);
   letter-spacing: 0.14em;
 }
+[data-theme="light"] .nav-data {
+  color: rgba(0, 47, 25, 0.35);
+}
 .nav-data .v {
   color: rgba(0, 212, 204, 0.4);
 }
+[data-theme="light"] .nav-data .v {
+  color: rgba(0, 120, 64, 0.35);
+}
+
 .nav-stream {
   position: absolute;
   left: 50%;
@@ -533,7 +590,10 @@ nav::after {
   transform: translateX(-50%);
   width: 220px;
   height: 100%;
-  opacity: 0.2;
+  opacity: 0.3;
+}
+[data-theme="light"] .nav-stream {
+  opacity: 0.5;
 }
 .nav-stream-line {
   animation: dataFlow 1.8s linear infinite;
@@ -547,11 +607,20 @@ nav::after {
   color: rgba(0, 212, 204, 0.3);
   letter-spacing: 0.14em;
 }
+[data-theme="light"] .nav-crumb {
+  color:rgba(0, 120, 64, 0.3);
+}
 .crumb-sep {
   color: rgba(0, 255, 135, 0.15);
 }
+[data-theme="light"] .crumb-sep {
+  color: var(--teal);
+}
 .nav-crumb .v {
   color: rgba(0, 212, 204, 0.55);
+}
+[data-theme="light"] .nav-crumb .v {
+  color: rgba(0, 120, 64, 0.35);
 }
 
 /* ── sigil burger (mobile) ── */
