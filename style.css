@@ -7,8 +7,8 @@
   --deep: #040c12;
   --forest: #050f0a;
   --teal: #00d4cc;
-  --gln: rgba(0, 255, 135, 0.04);
-  --gcl: rgba(0, 212, 204, 0.04);
+  --gln: rgba(0, 255, 135, 0.02);
+  --gcl: rgba(0, 212, 204, 0.02);
   --text: #c8e8d8;
   --seam: #0f2318;
   --card: #0a1510;
@@ -34,8 +34,8 @@
   --deep: #e6f2ec;
   --forest: #eaf5ee;
   --teal: #007070;
-  --gln: rgba(0, 120, 64, 0.045);
-  --gcl: rgba(0, 110, 110, 0.046);
+  --gln: rgba(0, 120, 64, 0.01);
+  --gcl: rgba(0, 110, 110, 0.01);
   --text: #1a3a2a;
   --seam: #c8e6d4;
   --card: #ffffff;
@@ -1557,13 +1557,13 @@ section {
     margin: 0 auto;
     width: 100%;
     position: relative;
-    min-height: 350px;
+    min-height: 320px;
   }
 
   .orb-wrap {
     width: 180px;
     height: 180px;
-    margin-bottom: 18px;
+    margin-bottom: 7px;
     flex-shrink: 0;
     position: relative;
   }
@@ -1582,7 +1582,7 @@ section {
 
   .hdata.br {
     top: 40%;
-    right: 2%;
+    right: 8%;
     text-align: right;
   }
   .hero-desc {
@@ -1598,7 +1598,7 @@ section {
     font-size: 0.9rem;
   }
   .hero-visual {
-    min-height: 400px;
+    min-height: 250px;
   }
 
   .orb-wrap {
