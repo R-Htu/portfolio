@@ -131,34 +131,74 @@ body::after {
 ═══════════════════════════ */
 
 @keyframes scanline {
-  0%   { top: -10%; }
-  100% { top: 110%; }
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 110%;
+  }
 }
 @keyframes cornerBlink {
-  0%,100% { opacity:1; }
-  45%,55% { opacity:0.15; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  45%,
+  55% {
+    opacity: 0.15;
+  }
 }
 @keyframes logoGlitch {
-  0%,88%,100% { clip-path:none; transform:none; }
-  90%  { clip-path:inset(30% 0 50% 0); transform:translate(-2px,0); }
-  93%  { clip-path:inset(60% 0 10% 0); transform:translate(2px,0); }
-  96%  { clip-path:none; transform:translate(0); }
+  0%,
+  88%,
+  100% {
+    clip-path: none;
+    transform: none;
+  }
+  90% {
+    clip-path: inset(30% 0 50% 0);
+    transform: translate(-2px, 0);
+  }
+  93% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, 0);
+  }
+  96% {
+    clip-path: none;
+    transform: translate(0);
+  }
 }
 @keyframes nodeOrbit {
-  from { transform:rotate(0deg) translateX(14px) rotate(0deg); }
-  to   { transform:rotate(360deg) translateX(14px) rotate(-360deg); }
+  from {
+    transform: rotate(0deg) translateX(14px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(14px) rotate(-360deg);
+  }
 }
 @keyframes statusPing {
-  0%   { transform:scale(1); opacity:0.8; }
-  100% { transform:scale(2.5); opacity:0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
 }
 @keyframes dataFlow {
-  0%   { stroke-dashoffset:40; }
-  100% { stroke-dashoffset:0; }
+  0% {
+    stroke-dashoffset: 40;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   background: var(--nav-bg);
   backdrop-filter: blur(16px);
@@ -169,9 +209,10 @@ nav {
 nav::after {
   content: "";
   position: absolute;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   height: 2px;
-  background: linear-gradient(transparent, rgba(0,255,135,0.1), transparent);
+  background: linear-gradient(transparent, rgba(0, 255, 135, 0.1), transparent);
   animation: scanline 5s linear infinite;
   pointer-events: none;
   z-index: 10;
@@ -179,13 +220,14 @@ nav::after {
 .nav-topbar {
   position: relative;
   height: 2px;
-  background: linear-gradient(90deg,
+  background: linear-gradient(
+    90deg,
     transparent 0%,
-    rgba(0,255,135,0.15) 15%,
+    rgba(0, 255, 135, 0.15) 15%,
     var(--moss) 40%,
     var(--teal) 50%,
     var(--moss) 60%,
-    rgba(0,255,135,0.15) 85%,
+    rgba(0, 255, 135, 0.15) 85%,
     transparent 100%
   );
 }
@@ -194,14 +236,20 @@ nav::after {
   content: "";
   position: absolute;
   top: -2px;
-  width: 6px; height: 6px;
+  width: 6px;
+  height: 6px;
   border: 1px solid var(--moss);
   transform: rotate(45deg);
   animation: cornerBlink 2.5s ease-in-out infinite;
   background: var(--void);
 }
-.nav-topbar::before { left: 18px; }
-.nav-topbar::after  { right: 18px; animation-delay: 0.9s; }
+.nav-topbar::before {
+  left: 18px;
+}
+.nav-topbar::after {
+  right: 18px;
+  animation-delay: 0.9s;
+}
 
 /* ── main row ── */
 .nav-main {
@@ -220,25 +268,34 @@ nav::after {
 }
 .nav-logo-hex {
   position: relative;
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 .nav-logo-hex svg {
   position: absolute;
-  inset: 0; width: 100%; height: 100%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 .hex-orbit-dot {
   position: absolute;
-  width: 4px; height: 4px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--teal);
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   margin: -2px 0 0 -2px;
   animation: nodeOrbit 3s linear infinite;
   box-shadow: 0 0 6px var(--teal);
 }
-.nav-logo-wordmark { position: relative; }
+.nav-logo-wordmark {
+  position: relative;
+}
 .nav-logo-text {
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
@@ -248,18 +305,20 @@ nav::after {
   animation: logoGlitch 7s infinite;
   display: block;
 }
-.nav-logo-text span { color: var(--teal); }
+.nav-logo-text span {
+  color: var(--teal);
+}
 .nav-logo-sub {
-  font-family:"Share Tech Mono", monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 0.42rem;
-  color: rgba(0,212,204,0.4);
+  color: rgba(0, 212, 204, 0.4);
   letter-spacing: 0.2em;
   white-space: nowrap;
   display: block;
   margin-top: 1px;
 }
 [data-theme="light"] .nav-logo-sub {
-  color: rgba(0,112,112,0.5);
+  color: rgba(0, 112, 112, 0.5);
 }
 
 /* ── center links ── */
@@ -273,18 +332,27 @@ nav::after {
 .nav-links::after {
   content: "";
   position: absolute;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   bottom: -8px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,255,135,0.15), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 135, 0.15),
+    transparent
+  );
 }
-.nav-link-item { position: relative; }
+.nav-link-item {
+  position: relative;
+}
 .nav-link-item + .nav-link-item::before {
   content: "·";
   position: absolute;
-  left: 0; top: 50%;
+  left: 0;
+  top: 50%;
   transform: translateY(-50%);
-  color: rgba(0,255,135,0.15);
+  color: rgba(0, 255, 135, 0.15);
   pointer-events: none;
   font-size: 0.8rem;
 }
@@ -307,22 +375,32 @@ nav::after {
   font-size: 0.48rem;
   opacity: 0;
   color: var(--moss);
-  transition: opacity 0.2s, transform 0.25s;
+  transition:
+    opacity 0.2s,
+    transform 0.25s;
   transform: scale(0.4) rotate(0deg);
 }
 .nav-link-item a::after {
   content: "";
   position: absolute;
-  bottom: 0; left: 14px; right: 14px;
+  bottom: 0;
+  left: 14px;
+  right: 14px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--moss), transparent);
   transform: scaleX(0);
   transition: transform 0.3s;
 }
-.nav-link-item a:hover             { color: var(--moss); }
-.nav-link-item a:hover::before     { opacity: 1; transform: scale(1) rotate(30deg); }
-.nav-link-item a:hover::after      { transform: scaleX(1); }
-
+.nav-link-item a:hover {
+  color: var(--moss);
+}
+.nav-link-item a:hover::before {
+  opacity: 1;
+  transform: scale(1) rotate(30deg);
+}
+.nav-link-item a:hover::after {
+  transform: scaleX(1);
+}
 
 [data-theme="dark"] .nav-logo {
   animation: gPulse 4s infinite;
@@ -331,9 +409,6 @@ nav::after {
 [data-theme="light"] .nav-logo {
   animation: gPulseL 4s infinite;
 }
-
-
-
 
 /* ── right cluster ── */
 .nav-right {
@@ -349,23 +424,35 @@ nav::after {
   gap: 6px;
   font-family: "Space Mono", monospace;
   font-size: 0.58rem;
-  color: rgba(0,212,204,0.6);
+  color: rgba(0, 212, 204, 0.6);
   letter-spacing: 0.1em;
   padding: 4px 10px;
-  border: 1px solid rgba(0,255,135,0.12);
+  border: 1px solid rgba(0, 255, 135, 0.12);
   position: relative;
 }
 .nav-status::before,
 .nav-status::after {
   content: "";
   position: absolute;
-  width: 4px; height: 4px;
-  border: 1px solid rgba(0,255,135,0.35);
+  width: 4px;
+  height: 4px;
+  border: 1px solid rgba(0, 255, 135, 0.35);
 }
-.nav-status::before { top:-1px; left:-1px; border-right:none; border-bottom:none; }
-.nav-status::after  { bottom:-1px; right:-1px; border-left:none; border-top:none; }
+.nav-status::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.nav-status::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
 .status-dot {
-  width: 6px; height: 6px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--moss);
   position: relative;
@@ -392,19 +479,32 @@ nav::after {
   padding: 8px 18px;
   white-space: nowrap;
   clip-path: polygon(7px 0%, 100% 0%, calc(100% - 7px) 100%, 0% 100%);
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   position: relative;
   overflow: hidden;
 }
 .nav-cta::before {
   content: "";
-  position: absolute; inset:0;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transform: translateX(-100%);
   transition: transform 0.4s;
 }
-.nav-cta:hover { background: var(--glow); box-shadow: 0 0 20px rgba(0,255,135,0.3); }
-.nav-cta:hover::before { transform: translateX(100%); }
+.nav-cta:hover {
+  background: var(--glow);
+  box-shadow: 0 0 20px rgba(0, 255, 135, 0.3);
+}
+.nav-cta:hover::before {
+  transform: translateX(100%);
+}
 
 /* ── bottom data bar ── */
 .nav-bottom {
@@ -412,20 +512,24 @@ nav::after {
   align-items: center;
   justify-content: space-between;
   padding: 3px 22px;
-  border-top: 1px solid rgba(0,255,135,0.06);
+  border-top: 1px solid rgba(0, 255, 135, 0.06);
   position: relative;
   min-height: 20px;
 }
 .nav-data {
   font-family: "Space Mono", monospace;
   font-size: 0.5rem;
-  color: rgba(0,255,135,0.2);
+  color: rgba(0, 255, 135, 0.2);
   letter-spacing: 0.14em;
 }
-.nav-data .v { color: rgba(0,212,204,0.4); }
+.nav-data .v {
+  color: rgba(0, 212, 204, 0.4);
+}
 .nav-stream {
   position: absolute;
-  left: 50%; top: 0; bottom: 0;
+  left: 50%;
+  top: 0;
+  bottom: 0;
   transform: translateX(-50%);
   width: 220px;
   height: 100%;
@@ -440,36 +544,66 @@ nav::after {
   gap: 5px;
   font-family: "Space Mono", monospace;
   font-size: 0.5rem;
-  color: rgba(0,212,204,0.3);
+  color: rgba(0, 212, 204, 0.3);
   letter-spacing: 0.14em;
 }
-.crumb-sep { color: rgba(0,255,135,0.15); }
-.nav-crumb .v { color: rgba(0,212,204,0.55); }
+.crumb-sep {
+  color: rgba(0, 255, 135, 0.15);
+}
+.nav-crumb .v {
+  color: rgba(0, 212, 204, 0.55);
+}
 
 /* ── sigil burger (mobile) ── */
 /* ── Glitch Bars burger ── */
 @keyframes scanH {
-  0%   { top: -2px; opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { top: calc(100% + 2px); opacity: 0; }
+  0% {
+    top: -2px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% + 2px);
+    opacity: 0;
+  }
 }
 @keyframes glitchBar {
-  0%,80%,100% { transform: translateX(0); opacity: 1; }
-  82%  { transform: translateX(-3px); opacity: 0.6; }
-  85%  { transform: translateX(4px);  opacity: 0.8; }
-  88%  { transform: translateX(-2px); opacity: 0.9; }
-  91%  { transform: translateX(0);    opacity: 1; }
+  0%,
+  80%,
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  82% {
+    transform: translateX(-3px);
+    opacity: 0.6;
+  }
+  85% {
+    transform: translateX(4px);
+    opacity: 0.8;
+  }
+  88% {
+    transform: translateX(-2px);
+    opacity: 0.9;
+  }
+  91% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 .sigil-btn {
-  display: none;   /* ← must be here */
+  display: none;
   background: var(--card);
   border: 1px solid var(--wire);
   width: 42px;
   height: 42px;
   align-items: center;
   justify-content: center;
-  /* ... rest of your styles */
 }
 .glitch-bars {
   display: flex;
@@ -484,33 +618,57 @@ nav::after {
   position: relative;
   animation: glitchBar 5s infinite;
 }
-.gbar:nth-child(1) { width: 22px; animation-delay: 0s; }
-.gbar:nth-child(2) { width: 14px; margin-left: 8px; animation-delay: 0.08s; }
-.gbar:nth-child(3) { width: 22px; animation-delay: 0.16s; }
+.gbar:nth-child(1) {
+  width: 22px;
+  animation-delay: 0s;
+}
+.gbar:nth-child(2) {
+  width: 14px;
+  margin-left: 8px;
+  animation-delay: 0.08s;
+}
+.gbar:nth-child(3) {
+  width: 22px;
+  animation-delay: 0.16s;
+}
 
 /* small square cap on right end of each bar */
 .gbar::after {
   content: "";
   position: absolute;
-  right: -3px; top: -2px;
-  width: 3px; height: 5px;
+  right: -3px;
+  top: -2px;
+  width: 3px;
+  height: 5px;
   border: 1px solid var(--moss);
   opacity: 0;
   transition: opacity 0.3s;
 }
 
 /* hover state */
-.sigil-btn:hover .gbar           { background: var(--moss); }
-.sigil-btn:hover .gbar:nth-child(1) { width: 12px; }
-.sigil-btn:hover .gbar:nth-child(2) { width: 22px; margin-left: 0; }
-.sigil-btn:hover .gbar:nth-child(3) { width: 17px; }
-.sigil-btn:hover .gbar::after    { opacity: 1; }
+.sigil-btn:hover .gbar {
+  background: var(--moss);
+}
+.sigil-btn:hover .gbar:nth-child(1) {
+  width: 12px;
+}
+.sigil-btn:hover .gbar:nth-child(2) {
+  width: 22px;
+  margin-left: 0;
+}
+.sigil-btn:hover .gbar:nth-child(3) {
+  width: 17px;
+}
+.sigil-btn:hover .gbar::after {
+  opacity: 1;
+}
 
 /* scanline sweep over the whole button */
 .sigil-btn::before {
   content: "";
   position: absolute;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   height: 1px;
   background: rgba(0, 255, 135, 0.35);
   animation: scanH 2.5s linear infinite;
@@ -534,13 +692,17 @@ nav::after {
   width: 22px !important;
   background: var(--moss);
 }
-.sigil-btn.open .gbar::after { opacity: 0 !important; }
+.sigil-btn.open .gbar::after {
+  opacity: 0 !important;
+}
 
 /* ── drawer (mobile) ── */
 .nav-drawer {
   display: none;
   position: fixed;
-  top: 72px; left: 0; right: 0;
+  top: 72px;
+  left: 0;
+  right: 0;
   z-index: 99;
   background: var(--nav-bg);
   border-bottom: 1px solid var(--seam);
@@ -549,7 +711,9 @@ nav::after {
   flex-direction: column;
   gap: 0;
 }
-.nav-drawer.open { display: flex; }
+.nav-drawer.open {
+  display: flex;
+}
 .nav-drawer a {
   font-family: "Space Mono", monospace;
   font-size: 0.78rem;
@@ -559,13 +723,27 @@ nav::after {
   text-transform: uppercase;
   padding: 11px 0;
   border-bottom: 1px solid var(--seam);
-  transition: color 0.2s, padding-left 0.2s;
+  transition:
+    color 0.2s,
+    padding-left 0.2s;
   position: relative;
 }
-.nav-drawer a::before { content:"> "; color:var(--moss); opacity:0; transition:opacity 0.2s; }
-.nav-drawer a:hover   { color:var(--moss); padding-left:8px; }
-.nav-drawer a:hover::before { opacity:1; }
-.nav-drawer a:last-child { border-bottom: none; }
+.nav-drawer a::before {
+  content: "> ";
+  color: var(--moss);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.nav-drawer a:hover {
+  color: var(--moss);
+  padding-left: 8px;
+}
+.nav-drawer a:hover::before {
+  opacity: 1;
+}
+.nav-drawer a:last-child {
+  border-bottom: none;
+}
 
 /* ── responsive ── */
 @media (max-width: 900px) {
@@ -580,9 +758,15 @@ nav::after {
   }
 }
 @media (max-width: 400px) {
-  .nav-main    { padding: 10px 14px; }
-  .nav-bottom  { padding: 3px 14px; }
-  .nav-logo-text { font-size: 0.82rem; }
+  .nav-main {
+    padding: 10px 14px;
+  }
+  .nav-bottom {
+    padding: 3px 14px;
+  }
+  .nav-logo-text {
+    font-size: 0.82rem;
+  }
 }
 
 section {
@@ -611,7 +795,6 @@ section {
   align-items: center;
   width: 100%;
   padding: 36px 0 50px 0;
-  ;
 }
 
 @keyframes fadeUp {
@@ -708,19 +891,16 @@ section {
   margin: 0 5px;
 }
 .hero-desc {
-     font-family: "Smooch Sans", sans-serif;
+  font-family: "Smooch Sans", sans-serif;
   font-size: 1.2rem;
   line-height: 1.8;
   color: var(--text);
   max-width: 500px;
   margin-bottom: 32px;
   font-weight: 300;
-  
 }
 .hero-desc strong {
   color: var(--dim);
-
-
 }
 .hero-btns {
   display: flex;
@@ -730,7 +910,7 @@ section {
 
 .btn-p {
   font-family: "Cinzel", serif;
- font-size: 0.7rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   color: var(--void);
   background: var(--moss);
@@ -747,13 +927,24 @@ section {
 }
 .btn-p::after {
   content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
   transform: translateX(-100%);
   transition: transform 0.5s;
 }
-.btn-p:hover::after { transform: translateX(100%); }
-.btn-p:hover { background: var(--glow); box-shadow: 0 0 25px rgba(0, 255, 135, 0.4); }
+.btn-p:hover::after {
+  transform: translateX(100%);
+}
+.btn-p:hover {
+  background: var(--glow);
+  box-shadow: 0 0 25px rgba(0, 255, 135, 0.4);
+}
 .btn-g {
   font-family: "Share Tech Mono", monospace;
   font-size: 0.7rem;
@@ -771,8 +962,10 @@ section {
 .btn-g::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 6px; height: 6px;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
   border-top: 1px solid var(--moss);
   border-left: 1px solid var(--moss);
   transition: all 0.3s;
@@ -780,8 +973,10 @@ section {
 .btn-g::after {
   content: "";
   position: absolute;
-  bottom: 0; right: 0;
-  width: 6px; height: 6px;
+  bottom: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
   border-bottom: 1px solid var(--moss);
   border-right: 1px solid var(--moss);
   transition: all 0.3s;
@@ -792,8 +987,16 @@ section {
   background: rgba(0, 255, 135, 0.05);
   box-shadow: 0 0 12px rgba(0, 255, 135, 0.12);
 }
-.btn-g:hover::before { width: 12px; height: 12px;background-color: var(--moss); }
-.btn-g:hover::after { width: 12px; height: 12px; background-color: var(--moss); }
+.btn-g:hover::before {
+  width: 12px;
+  height: 12px;
+  background-color: var(--moss);
+}
+.btn-g:hover::after {
+  width: 12px;
+  height: 12px;
+  background-color: var(--moss);
+}
 
 /* ═══════════════════════════
    RESPONSIVE — TABLET ≤900
@@ -808,7 +1011,6 @@ section {
   .nav-cta {
     display: none;
   }
-
 }
 /* ═══════════════════════════
    RESPONSIVE — MOBILE ≤600
@@ -829,15 +1031,13 @@ section {
   .hero-desc {
     font-size: 1.08rem;
   }
-  
+
   .btn-p,
   .btn-g {
     text-align: center;
     padding: 13px 18px;
   }
 }
-
- 
 
 /* Orb */
 
@@ -863,7 +1063,6 @@ section {
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 2rem;
 }
 .orb-wrap {
   position: relative;
@@ -914,8 +1113,17 @@ section {
 }
 
 @keyframes orbCorePulse {
-  0%, 100% { box-shadow: 0 0 13px rgba(0, 255, 135, 0.15), inset 0 0 13px rgba(0, 255, 135, 0.05); }
-  50% { box-shadow: 0 0 8px rgba(0, 255, 135, 0.3), inset 0 0 8px rgba(0, 255, 135, 0.1); }
+  0%,
+  100% {
+    box-shadow:
+      0 0 13px rgba(0, 255, 135, 0.15),
+      inset 0 0 13px rgba(0, 255, 135, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 8px rgba(0, 255, 135, 0.3),
+      inset 0 0 8px rgba(0, 255, 135, 0.1);
+  }
 }
 
 .orb-core {
@@ -938,10 +1146,14 @@ section {
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
 }
 
-
 @keyframes scanPulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 .orb-ascii {
   font-family: "Share Tech Mono", monospace;
@@ -955,7 +1167,6 @@ section {
 
 [data-theme="light"] .orb-ascii {
   color: var(--teal);
-  
 }
 .orb-glow {
   position: absolute;
@@ -1013,42 +1224,37 @@ section {
     padding: 24px 0;
   }
 
-   .hero-visual {
+  .hero-visual {
     order: -1;
     margin: 0 auto;
     width: 100%;
     position: relative;
-    overflow: visible !important;
-    min-height: 220px;  /* ← add this */
+    min-height: 250px; /* ← add this */
   }
 
-  /* Keep orb-wrap exactly as it is — do NOT change display or flex on it */
   .orb-wrap {
     width: 180px;
     height: 180px;
     margin-bottom: 18px;
     flex-shrink: 0;
-    /* this is critical — keep position:relative for the rings inside */
     position: relative;
   }
 
-  /* Both hdata blocks: pull out of absolute, into a flex row below the orb */
   .hdata {
     position: absolute;
     font-size: 0.68rem;
     line-height: 1.9;
     width: 100%;
-   
   }
 
-   .hdata.tl {
+  .hdata.tl {
     top: 10%;
     left: 12%;
   }
 
   .hdata.br {
-    top: 40%;        /* ← was bottom: 16px */
-    right: 2%;       /* ← pull it closer to edge */
+    top: 40%; 
+    right: 2%;
     text-align: right;
   }
   .hero-desc {
@@ -1056,43 +1262,41 @@ section {
   }
 }
 
-@media (max-width: 400px) {
-   nav {
+@media (max-width: 468px) {
+  nav {
     padding: 12px 14px;
   }
   .nav-logo {
     font-size: 0.9rem;
   }
-    .hero-visual {
-    min-height: 250px;  /* ← smaller for xs */
-  }
+
   .orb-wrap {
     width: 150px;
     height: 150px;
+    margin-top: 35px;
   }
 
   .orb-core {
     inset: 42px;
   }
 
-   .hdata.tl {
-    top: 8%;
+  .hdata.tl {
+    top: 14%;
     left: 4%;
   }
 
   .hdata.br {
-    top: 42%;        
-    right: 2%;
+    top: 47%;
+    right: 3%;
     text-align: right;
   }
 
   .hdata {
-    font-size: 0.55rem; 
+    font-size: 0.55rem;
   }
   .hero-btns {
     gap: 8px;
     flex-wrap: nowrap;
-    margin-bottom: 2rem;
   }
 
   .hero-btns .btn-p,
@@ -1100,7 +1304,7 @@ section {
     font-size: 0.55rem;
     padding: 10px 10px;
     letter-spacing: 0.06em;
-    flex: 1;              /* ← each takes equal width */
+    flex: 1; /* ← each takes equal width */
     text-align: center;
     z-index: 1000;
   }
