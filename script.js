@@ -1,4 +1,4 @@
-alert("Yeah, the small text isn’t really readable...I just made it look cool 😄")
+alert("The small text is for styling, not for reading...I just made it look cool 😄")
 /* ── THEME ── */
 function toggleTheme(){
   const html=document.documentElement;
