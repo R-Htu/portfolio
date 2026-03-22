@@ -34,8 +34,8 @@
   --deep: #e6f2ec;
   --forest: #eaf5ee;
   --teal: #007070;
-  --gln: rgba(0, 120, 64, 0.01);
-  --gcl: rgba(0, 110, 110, 0.01);
+  --gln: rgba(0, 120, 64, 0.1);
+  --gcl: rgba(0, 110, 110, 0.1);
   --text: #1a3a2a;
   --seam: #c8e6d4;
   --card: #ffffff;
@@ -89,6 +89,9 @@ body::after {
     linear-gradient(90deg, var(--gcl) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
+}
+[data-theme="light"] body::after{
+  background-size: 2px 2px;
 }
 
 #canvas {
