@@ -18,12 +18,13 @@
   <body>
     <canvas id="canvas"></canvas>
     <button id="themeBtn" onclick="toggleTheme()">[~~]</button>
-
     <!-- ╔══ NAV ══╗ -->
     <nav id="nav">
+      <!-- top accent bar -->
       <div class="nav-topbar"></div>
 
       <div class="nav-main">
+        <!-- LOGO -->
         <a href="#" class="nav-logo-wrap">
           <div class="nav-logo-hex">
             <svg viewBox="0 0 36 36" fill="none">
@@ -105,6 +106,7 @@
           </div>
         </a>
 
+        <!-- CENTER LINKS -->
         <ul class="nav-links">
           <li class="nav-link-item"><a href="#about">Story</a></li>
           <li class="nav-link-item"><a href="#courses">Courses</a></li>
@@ -114,6 +116,7 @@
           <li class="nav-link-item"><a href="#gallery">Gallery</a></li>
         </ul>
 
+        <!-- RIGHT -->
         <div class="nav-right">
           <div class="nav-status">
             <div class="status-dot"></div>
@@ -135,6 +138,7 @@
         </div>
       </div>
 
+      <!-- BOTTOM DATA BAR -->
       <div class="nav-bottom">
         <div class="nav-data">
           UID:<span class="v">R-HTU-001</span> // SIGNAL:<span class="v"
@@ -167,48 +171,50 @@
         <div class="drawer-sys">SYS:NAV // MODULE:OPEN</div>
         <div class="drawer-count">6 NODES AVAILABLE</div>
       </div>
-      <a href="#about" onclick="closeMenu()" class="drawer-link"
-        ><div class="d-index">01</div>
+
+      <a href="#about" onclick="closeMenu()" class="drawer-link">
+        <div class="d-index">01</div>
         <div class="d-sep"></div>
         <div class="d-text">My Story</div>
         <div class="d-tag">ABOUT</div>
-        <div class="d-arrow">›</div></a
-      >
-      <a href="#courses" onclick="closeMenu()" class="drawer-link"
-        ><div class="d-index">02</div>
+        <div class="d-arrow">›</div>
+      </a>
+      <a href="#courses" onclick="closeMenu()" class="drawer-link">
+        <div class="d-index">02</div>
         <div class="d-sep"></div>
         <div class="d-text">Courses</div>
         <div class="d-tag">LEARN</div>
-        <div class="d-arrow">›</div></a
-      >
-      <a href="#life" onclick="closeMenu()" class="drawer-link"
-        ><div class="d-index">03</div>
+        <div class="d-arrow">›</div>
+      </a>
+      <a href="#life" onclick="closeMenu()" class="drawer-link">
+        <div class="d-index">03</div>
         <div class="d-sep"></div>
         <div class="d-text">Life</div>
         <div class="d-tag">JOURNAL</div>
-        <div class="d-arrow">›</div></a
-      >
-      <a href="#skills" onclick="closeMenu()" class="drawer-link"
-        ><div class="d-index">04</div>
+        <div class="d-arrow">›</div>
+      </a>
+      <a href="#skills" onclick="closeMenu()" class="drawer-link">
+        <div class="d-index">04</div>
         <div class="d-sep"></div>
         <div class="d-text">Learning</div>
         <div class="d-tag">SKILLS</div>
-        <div class="d-arrow">›</div></a
-      >
-      <a href="#philosophy" onclick="closeMenu()" class="drawer-link"
-        ><div class="d-index">05</div>
+        <div class="d-arrow">›</div>
+      </a>
+      <a href="#philosophy" onclick="closeMenu()" class="drawer-link">
+        <div class="d-index">05</div>
         <div class="d-sep"></div>
         <div class="d-text">Discussion</div>
         <div class="d-tag">TALK</div>
-        <div class="d-arrow">›</div></a
-      >
-      <a href="#gallery" onclick="closeMenu()" class="drawer-link"
-        ><div class="d-index">06</div>
+        <div class="d-arrow">›</div>
+      </a>
+      <a href="#gallery" onclick="closeMenu()" class="drawer-link">
+        <div class="d-index">06</div>
         <div class="d-sep"></div>
         <div class="d-text">Gallery</div>
         <div class="d-tag">VIEW</div>
-        <div class="d-arrow">›</div></a
-      >
+        <div class="d-arrow">›</div>
+      </a>
+
       <div class="drawer-footer">
         <div class="drawer-footer-text">
           UID:<span class="v">R-HTU-001</span> // STATUS:<span class="v"
@@ -218,67 +224,39 @@
         <div class="drawer-footer-text">TAP NODE TO NAVIGATE</div>
       </div>
     </div>
-
     <main>
-      <!-- ╔══ INTRO ══╗ -->
+      <!-- ╔══ intro ══╗ -->
       <section id="intro">
-        <!-- ╔══  POLYGON BACKGROUND ══╗ -->
-
-        <div class="poly-bg" id="polyBg">
-          <svg
-            id="polySvg"
-            viewBox="0 0 1440 900"
-            preserveAspectRatio="xMidYMid slice"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <radialGradient id="orb1" cx="30%" cy="20%" r="50%">
-                <stop offset="0%" stop-color="#7f5af0" stop-opacity="0.07" />
-                <stop offset="100%" stop-color="#7f5af0" stop-opacity="0" />
-              </radialGradient>
-              <radialGradient id="orb2" cx="80%" cy="70%" r="45%">
-                <stop offset="0%" stop-color="#00ffe1" stop-opacity="0.05" />
-                <stop offset="100%" stop-color="#00ffe1" stop-opacity="0" />
-              </radialGradient>
-            </defs>
-            <rect width="1440" height="900" fill="url(#orb1)" />
-            <rect width="1440" height="900" fill="url(#orb2)" />
-            <g id="polyLines" fill="none"></g>
-          </svg>
-        </div>
-
         <div class="wrap">
           <div class="intro-inner">
             <div class="intro-text">
               <div class="intro-eyebrow fu">
-                EDUCATOR since 2006 · IT Graduate · But Self-Taught Dev<span
-                  style="color: var(--teal)"
-                  >(^_~)</span
-                >
+                EDUCATOR since 2006 · IT Graduate · But Self-Taught Dev(^_~)
               </div>
               <h1 class="intro-name fu d1">
                 <span class="glow" data-text="THEN">THEN</span>
               </h1>
               <div class="intro-strip fu d2">
-                <span>//</span> Housewife <span>//</span> Grower
-                <span>//</span> Homeschool Mom
-                <span style="color: var(--muted)">(^o^)</span>
+                Homeschool Mom <span>//</span> Housewife
+                <span>//</span> Gardener <span>//</span> Overthinker(^o^)
               </div>
               <p class="intro-desc fu d3">
-                I started teaching before my own Grade 10 results were out in
-                2006
-                <span style="font-weight: 400; color: var(--teal)">(ಠ‿ಠ)</span>
-                because my friends believed in me first. They were also Grade 10
-                students but they knew they would fail and wanted me to guide
-                them for the next year's exams. This is how I ended up teaching
-                and I'm still doing it now
-                <span style="font-weight: 400; color: var(--teal)">(≧∇≦)</span>
+                I started teaching
+                <span style="font-weight:500 ;">before my own Grade 10 results were out in 2006</span>
+                (ಠ‿ಠ) because my friends believed in me first. They were also
+                Grade 10 students but they knew they would fail and wanted me to
+                guide them for the next year's exams.
+                   <span style="font-weight:500 ;">
+                  This is how I ended up teaching and I'm still doing it now
+                  (≧∇≦)
+                </span>
               </p>
               <div class="intro-btns fu d4">
                 <a href="#courses" class="btn-p">Explore Gallery</a>
                 <a href="#about" class="btn-g">Read My Story</a>
               </div>
             </div>
+            <!-- /.intro-text -->
 
             <div class="intro-visual fu d3">
               <div class="hdata tl">
@@ -287,6 +265,7 @@
                 <div>SPECIES: <span class="v">Human(?)</span></div>
                 <div>ROLE: <span class="v">Housewife.exe</span></div>
               </div>
+
               <div class="orb-wrap">
                 <div class="orb-glow"></div>
                 <div class="orb-ring"></div>
@@ -303,6 +282,8 @@
                   </div>
                 </div>
               </div>
+              <!-- /.orb-wrap -->
+
               <div class="hdata br">
                 <div>THINKING: <span class="v">ACTIVE</span></div>
                 <div>COURSES: <span class="v">4+</span></div>
@@ -310,186 +291,13 @@
                 <div>LOVE: <span class="v">MAX++</span></div>
               </div>
             </div>
+            <!-- /.intro-visual -->
           </div>
+          <!-- /.intro-inner -->
         </div>
-        <div class="scroll-hint">
-          <span>SCROLL</span>
-          <div class="ln"></div>
-        </div>
-      </section>
+        <!-- /.wrap -->
 
-      <!-- ╔══ LIFE ══╗ -->
-
-      <section id="life">
-        <div class="hex-grid-bg"></div>
-        <div class="life-scanline"></div>
-
-        <div class="wrap">
-          <div class="sec-hdr">
-            <div class="sec-tag">// life_processes.running</div>
-            <h2 class="sec-title">
-              Running <span class="ac">Four Things at Once</span>
-            </h2>
-            <div class="sec-line"></div>
-            <div class="status-bar">
-              <div class="status-pip">
-                <div class="pip-dot"></div>
-                TEACHER_ACTIVE
-              </div>
-              <div class="status-pip">
-                <div class="pip-dot"></div>
-                HOMESCHOOL_ONLINE
-              </div>
-              <div class="status-pip">
-                <div class="pip-dot"></div>
-                GROWER_RUNNING
-              </div>
-              <div class="status-pip">
-                <div class="pip-dot"></div>
-                COOK_INITIALISED
-              </div>
-            </div>
-            <p class="sec-sub">
-              Multiple processes detected. All running. None terminated.
-            </p>
-          </div>
-
-          <div class="p-grid">
-            <div
-              class="pillar"
-              style="--pc: #00ffe1; --pc-glow: rgba(0, 255, 225, 0.06)"
-            >
-              <div class="pillar-scan"></div>
-              <div class="corner-deco tl"></div>
-              <div class="corner-deco br"></div>
-              <div class="p-icon-wrap">
-                <div class="p-icon-hex"></div>
-                <span class="p-icon">(~_~)</span>
-              </div>
-              <div class="p-title">The Educator</div>
-              <p class="p-desc">
-                I never really set out to be a teacher. I just kept helping
-                people :") especially younger ones because they needed it. More than
-                a decade later, I’m still doing it. Not for rewards, not for
-                recognition,just because I care.
-              </p>
-            </div>
-
-            <div
-              class="pillar"
-              style="--pc: #7f5af0; --pc-glow: rgba(127, 90, 240, 0.06)"
-            >
-              <div class="pillar-scan"></div>
-              <div class="corner-deco tl"></div>
-              <div class="corner-deco br"></div>
-              <div class="p-icon-wrap">
-                <div class="p-icon-hex"></div>
-                <span
-                  class="p-icon"
-                  style="
-                    color: #7f5af0;
-                    filter: drop-shadow(0 0 6px rgba(127, 90, 240, 0.6));
-                  "
-                  >(@_@)</span
-                >
-              </div>
-              <div class="p-title">The Homeschool Mom</div>
-              <p class="p-desc">
-                My son is 11 and we learn together at home. He is my most
-                complex and most rewarding project. Watching him discover things
-                is better than any deployment success I've ever had.
-              </p>
-            </div>
-
-            <div
-              class="pillar"
-              style="--pc: #00ff87; --pc-glow: rgba(0, 255, 135, 0.06)"
-            >
-              <div class="pillar-scan"></div>
-              <div class="corner-deco tl"></div>
-              <div class="corner-deco br"></div>
-              <div class="p-icon-wrap">
-                <div class="p-icon-hex"></div>
-                <span
-                  class="p-icon"
-                  style="
-                    color: #00ff87;
-                    filter: drop-shadow(0 0 6px rgba(0, 255, 135, 0.6));
-                  "
-                  >(*_*)</span
-                >
-              </div>
-              <div class="p-title">The Grower</div>
-              <p class="p-desc">
-                A big yard, many plants and a deep love of growing things from
-                seed. I compost, propagate and get my hands in the soil daily.
-                The garden is where I go to think, debug and reset.
-              </p>
-            </div>
-
-            <div
-              class="pillar"
-              style="--pc: #430118; --pc-glow: rgba(255, 45, 120, 0.06)"
-            >
-              <div class="pillar-scan"></div>
-              <div class="corner-deco tl"></div>
-              <div class="corner-deco br"></div>
-              <div class="p-icon-wrap">
-                <div class="p-icon-hex"></div>
-                <span
-                  class="p-icon"
-                  style="
-                    color: #ff2d78;
-                    filter: drop-shadow(0 0 6px rgba(255, 45, 120, 0.6));
-                  "
-                  >(^_^)</span
-                >
-              </div>
-              <div class="p-title">The Cook</div>
-              <p class="p-desc">
-                Cooking from a garden you planted yourself is one of the most
-                complete loops a person can close. Ingredients, constraints, a
-                hungry family : make something real from scratch. Same as code.
-              </p>
-            </div>
-          </div>
-
-          <div class="eco-box">
-            <div class="eco-bg-orb"></div>
-            <div class="eco-art">
-              &#32;________________________<br />
-              / &nbsp;E C O &nbsp;M E R G E &nbsp;. &nbsp;\<br />
-              |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
-              |&nbsp;[TECH] + [NATURE]&nbsp;&nbsp;&nbsp;&nbsp;|<br />
-              |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
-              [LIFE]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
-              |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
-              |&nbsp;grow . code . share &nbsp;|<br />
-              \________________________/<br />
-              &#32;. * . seeds . * . roots
-            </div>
-            <div class="eco-content">
-              <h3 class="eco-title">
-                ECO <span class="ac">MERGE</span> is Growing
-              </h3>
-              <p class="eco-p">
-                My next project brings everything together — gardening
-                guides, eco-friendly living, home cooking with homegrown
-                ingredients, and some tutorials. One living,
-                breathing website.
-              </p>
-              <p class="eco-p">
-                People say personal websites are useless. I say: let me prove that they can be awesome<span
-                  style="color: var(--teal)"
-                  >(ಡ‸ಡ)</span>.
-              </p>
-              <div class="eco-badge">
-                <div class="badge-dot"></div>
-                PLANTING NOW — LAUNCHING WHEN IT'S READY
-              </div>
-            </div>
-          </div>
-        </div>
+         <div class="scroll-hint"><span>SCROLL</span><div class="ln"></div></div>
       </section>
     </main>
   </body>
