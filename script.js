@@ -1,4 +1,4 @@
-alert("The small text is for styling, not for reading...I just made it look cool 😄")
+//alert("The small text is for styling, not for reading...I just made it look cool 😄")
 
 /* ── POLYGON BACKGROUND ── */
 (function () {
