@@ -6,7 +6,7 @@
     const theme = document.documentElement.getAttribute('data-theme') || 'dark';
     const isDark = theme !== 'light';
 
-    const stroke1 = isDark ? 'rgba(0,255,225,0.07)'   : 'rgba(10, 175, 251, 0.03)';
+    const stroke1 = isDark ? 'rgba(0,255,225,0.07)'   : 'rgba(10, 175, 151, 0.1)';
     const fill1   = isDark ? 'rgba(0,255,225,0.015)'  : 'rgba(0, 0, 0, 0.03)';
     const stroke2 = isDark ? 'rgba(127,90,240,0.06)'  : 'rgba(3, 60, 4, 0.03)';
     const fill2   = isDark ? 'rgba(127,90,240,0.012)' : 'rgba(96, 252, 5, 0.05)';
@@ -182,7 +182,7 @@ buildParticles();
       const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
       const d = Math.sqrt(dx * dx + dy * dy);
       if (d < 82) {
-        ctx.strokeStyle = `rgba(${lc},${(1 - d / 82) * .04})`;
+        ctx.strokeStyle = `rgba(${lc},${(1 - d / 82) * .4})`;
         ctx.lineWidth = .5;
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
@@ -194,3 +194,163 @@ buildParticles();
   particles.forEach(p => { p.update(); p.draw(); });
   requestAnimationFrame(loop);
 })();
+
+/* ══════════════════════════════════════
+   PILLAR NETWORK BACKGROUNDS
+══════════════════════════════════════ 
+function initPillarNetworks() {
+  document.querySelectorAll('.pillar').forEach(pillar => {
+    const cv = document.createElement('canvas');
+    cv.style.cssText = `
+      position:absolute;inset:0;width:100%;height:100%;
+      z-index:0;pointer-events:none;opacity:0.45;
+    `;
+    pillar.prepend(cv);
+
+    const ctx = cv.getContext('2d');
+    let W, H, pts = [];
+
+    function resize() {
+      W = cv.width  = pillar.offsetWidth;
+      H = cv.height = pillar.offsetHeight;
+    }
+
+    function init() {
+      resize();
+      pts = Array.from({ length: 18 }, () => ({
+        x: Math.random() * W,  y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+      const lineColor = isDark ? '0,255,225' : '0,130,100';
+      const dotColor  = isDark ? '0,255,225' : '0,130,100';
+
+      // connections
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < 80) {
+            ctx.strokeStyle = `rgba(${lineColor},${(1 - d / 80) * 0.5})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // dots
+      pts.forEach(p => {
+        ctx.fillStyle = `rgba(${dotColor},0.7)`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // move
+      pts.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    new ResizeObserver(resize).observe(pillar);
+    init();
+    draw();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initPillarNetworks);*/
+
+/* ══════════════════════════════════════
+   ECO-BOX NETWORK BACKGROUND
+══════════════════════════════════════ */
+function initEcoNetwork() {
+  const box = document.querySelector('.eco-box');
+  if (!box) return;
+
+  const cv = document.createElement('canvas');
+  cv.style.cssText = `
+    position:absolute;inset:0;width:100%;height:100%;
+    z-index:0;pointer-events:none;opacity:0.35;
+  `;
+  box.prepend(cv);
+
+  const ctx = cv.getContext('2d');
+  let W, H, pts = [];
+
+  function resize() {
+    W = cv.width  = box.offsetWidth;
+    H = cv.height = box.offsetHeight;
+  }
+
+  function init() {
+    resize();
+    pts = Array.from({ length: 40 }, () => ({
+      x:  Math.random() * W,
+      y:  Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const line = isDark ? '0,255,225'  : '0,255,10';
+    const dot  = isDark ? '127,90,240' : '94,195,17';
+
+    // connections
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x;
+        const dy = pts[i].y - pts[j].y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < 120) {
+          ctx.strokeStyle = `rgba(${line},${(1 - d / 120) * 0.9})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // dots
+    pts.forEach(p => {
+      ctx.fillStyle = `rgba(${dot},0.9)`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // move
+    pts.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  new ResizeObserver(resize).observe(box);
+  init();
+  draw();
+}
+
+document.addEventListener('DOMContentLoaded', initEcoNetwork);
