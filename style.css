@@ -1172,9 +1172,23 @@ section { padding: 88px 0; }
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 1px;
+  height: 3px;
   background: linear-gradient(90deg, transparent, var(--pc, var(--life-primary)), transparent);
   opacity: 0.8;
+  transition: all 0.3s;
+}
+
+.pillar:hover::after {
+  top: auto;    
+  bottom: 0;       
+  height: 100%;     
+  background: linear-gradient(0deg, var(--pc-glow, rgba(0,255,225,0.06)) 0%, transparent 100%);
+  opacity: 0.3; /* was 0.1, adjust to taste */
+}
+
+[data-theme="light"] .pillar:hover::after {
+  background: linear-gradient(0deg, var(--pc-glow, rgba(0,122,96,0.06)) 0%, transparent 100%);
+  opacity: 0.01;
 }
 .pillar-scan {
   position: absolute;
@@ -1191,10 +1205,16 @@ section { padding: 88px 0; }
 .pillar:nth-child(2) .pillar-scan { animation-delay: -1s; }
 .pillar:nth-child(3) .pillar-scan { animation-delay: -2s; }
 .pillar:nth-child(4) .pillar-scan { animation-delay: -3s; }
+
 .pillar:hover {
   transform: translateY(-5px);
-  border-color: var(--pc, var(--life-primary));
+  
+  /* Use the color at reduced opacity instead of full strength */
+  border-color: color-mix(in srgb, var(--pc, var(--life-primary)) 40%, transparent);
+  
+  /* Reduce the shadow intensity */
   box-shadow: var(--life-pillar-hover-shadow);
+  filter: brightness(0.92); /* slight dim on the whole card */
 }
 .p-icon-wrap {
   width: 52px; height: 52px;
@@ -1245,13 +1265,13 @@ section { padding: 88px 0; }
 } 
 .corner-deco {
   position: absolute;
-  width: 8px; height: 8px;
+  width: 18px; height: 10px;
   border-color: var(--pc, var(--life-primary));
   border-style: solid;
   opacity: 0.5;
 }
-.corner-deco.tl { top: 4px; left: 4px; border-width: 1px 0 0 1px; }
-.corner-deco.br { bottom: 4px; right: 4px; border-width: 0 1px 1px 0; }
+.corner-deco.tl { top: 4px; left: 4px; border-width: 2px 0 0 2px; }
+.corner-deco.br { bottom: 4px; right: 4px; border-width: 0 2px 2px 0; }
 
 /* ═══════════════════════════
    Eco Boox
@@ -1277,8 +1297,8 @@ section { padding: 88px 0; }
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--life-primary), var(--life-secondary), transparent);
+  height: 3px;
+   background: linear-gradient(90deg, transparent, var(--pc, var(--life-primary)), transparent);
   opacity: 0.6;
 }
 [data-theme="light"] .eco-box::before { opacity: 0.5; }
@@ -1287,7 +1307,7 @@ section { padding: 88px 0; }
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--life-green), transparent);
+  background: linear-gradient(90deg, transparent, var(--life-green), transparent );
   opacity: 0.4;
 }
 [data-theme="light"] .eco-box::after { opacity: 0.3; }

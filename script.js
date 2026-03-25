@@ -2,7 +2,7 @@
 
 /* ── POLYGON BACKGROUND ── */
 (function () {
-  alert("The small text is for styling, not for reading...I just made it look cool 😄")
+  //alert("The small text is for styling, not for reading...I just made it look cool 😄")
   function buildPolygons() {
     const theme = document.documentElement.getAttribute('data-theme') || 'dark';
     const isDark = theme !== 'light';
