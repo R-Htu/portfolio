@@ -2,6 +2,7 @@
 
 /* ── POLYGON BACKGROUND ── */
 (function () {
+  alert("The small text is for styling, not for reading...I just made it look cool 😄")
   function buildPolygons() {
     const theme = document.documentElement.getAttribute('data-theme') || 'dark';
     const isDark = theme !== 'light';
@@ -9,7 +10,7 @@
     const stroke1 = isDark ? 'rgba(0,255,225,0.07)'   : 'rgba(10, 175, 151, 0.1)';
     const fill1   = isDark ? 'rgba(0,255,225,0.015)'  : 'rgba(0, 0, 0, 0.03)';
     const stroke2 = isDark ? 'rgba(127,90,240,0.06)'  : 'rgba(3, 60, 4, 0.03)';
-    const fill2   = isDark ? 'rgba(127,90,240,0.012)' : 'rgba(96, 252, 5, 0.05)';
+    const fill2   = isDark ? 'rgba(127,90,240,0.012)' : 'white';
 
     const orb1Stop = isDark ? '#06f541' : '#5e35b1';
     const orb2Stop = isDark ? '#00ffe1' : '#007a60';
