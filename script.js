@@ -2,7 +2,7 @@
 
 /* ── POLYGON BACKGROUND ── */
 (function () {
-
+alert("The small text is for styling, not for reading...I just made it look cool 😄");
   function buildPolygons() {
 
  
@@ -540,16 +540,16 @@ document.addEventListener('DOMContentLoaded', initEcoNetwork);
 
 // ── STATS CAROUSEL ──
 
-
 (function () {
-  const items = Array.from(document.querySelectorAll('.stats-inner.stats-carousel .sitem'));
-  const dotsEl = document.getElementById('carouselDots');
-  let current = 0;
+  const items   = Array.from(document.querySelectorAll('.stats-inner.stats-carousel .sitem'));
+  const dotsEl  = document.getElementById('carouselDots');
+  let current   = 0;
+  let animating = false;
 
-  const acValues = items.map(el => el.style.getPropertyValue('--ac'));
+  const acValues  = items.map(el => el.style.getPropertyValue('--ac'));
+  const isMobile  = () => window.innerWidth < 768;
   const isDesktop = () => window.innerWidth >= 768;
 
-  // Build dots
   items.forEach((_, i) => {
     const d = document.createElement('button');
     d.className = 'cdot' + (i === 0 ? ' active' : '');
@@ -560,174 +560,78 @@ document.addEventListener('DOMContentLoaded', initEcoNetwork);
 
   items[0].classList.add('active');
 
-  function tx(x) {
-    // desktop: always offset from the -50% center
-    return isDesktop()
-      ? `translateX(calc(-50% + ${x}px))`
-      : `translateX(${x}px)`;
+  function clearMobileClasses(el) {
+    el.classList.remove(
+      'sitem-enter-right', 'sitem-enter-left',
+      'sitem-exit-right',  'sitem-exit-left',
+      'sitem-sliding'
+    );
   }
 
   function goTo(next, dir) {
-    if (next === current) return;
+    if (next === current || animating) return;
+    animating = true;
+
     const direction = dir ?? (next > current ? 1 : -1);
-    const prev = current;
+    const prev      = current;
 
-    const offset = isDesktop() ? 150 : 40;
+    if (isMobile()) {
+      const enterClass = direction === 1 ? 'sitem-enter-right' : 'sitem-enter-left';
+      const exitClass  = direction === 1 ? 'sitem-exit-left'   : 'sitem-exit-right';
 
-    // next starts off-screen in the direction it's coming FROM
-    // right arrow (dir=1)  → next enters from RIGHT  → starts at +offset
-    // left arrow  (dir=-1) → next enters from LEFT   → starts at -offset
-    const enterFrom = direction * offset;
+      clearMobileClasses(items[prev]);
+      clearMobileClasses(items[next]);
 
-    // prev exits to the OPPOSITE side
-    const exitTo = -direction * offset;
+      items[next].classList.add(enterClass);
+      items[next].getBoundingClientRect(); // reflow
 
-    // position next off-screen (no transition yet)
-    items[next].style.transition = 'none';
-    items[next].style.cssText = `--ac: ${acValues[next]}; transform: ${tx(enterFrom)}; opacity: 0; position: absolute; transition: none;`;
+      items[next].classList.remove(enterClass);
+      items[next].classList.add('sitem-sliding');
 
-    items[next].getBoundingClientRect(); // force reflow
-
-    // now enable transitions on both
-    items[prev].style.cssText = `--ac: ${acValues[prev]}; transform: ${tx(exitTo)}; opacity: 0; pointer-events: none; position: absolute; transition: opacity 0.35s ease, transform 0.35s ease;`;
-    items[next].style.cssText = `--ac: ${acValues[next]}; transform: ${tx(0)}; opacity: 1; pointer-events: auto; position: absolute; transition: opacity 0.35s ease, transform 0.35s ease;`;
-
-    setTimeout(() => {
       items[prev].classList.remove('active');
-      items[prev].style.cssText = `--ac: ${acValues[prev]};`;
-      items[next].classList.add('active');
-      items[next].style.cssText = `--ac: ${acValues[next]};`;
-    }, 360);
+      items[prev].classList.add(exitClass);
 
-    dotsEl.children[prev].classList.remove('active');
-    dotsEl.children[next].classList.add('active');
+      setTimeout(() => {
+        clearMobileClasses(items[prev]);
+        clearMobileClasses(items[next]);
+        items[next].classList.add('active');
 
-    current = next;
+        dotsEl.children[prev].classList.remove('active');
+        dotsEl.children[next].classList.add('active');
+
+        current   = next;
+        animating = false;
+      }, 360);
+
+    } else {
+      const enterFrom  =  direction * 150;
+      const exitTo     = -direction * 150;
+      const transition = 'opacity 0.35s ease, transform 0.35s ease';
+      const tx = x    => `translateX(calc(-50% + ${x}px))`;
+
+      items[next].style.cssText = `--ac: ${acValues[next]}; transform: ${tx(enterFrom)}; opacity: 0; position: absolute; transition: none;`;
+      items[next].getBoundingClientRect();
+
+      items[prev].style.cssText = `--ac: ${acValues[prev]}; transform: ${tx(exitTo)}; opacity: 0; pointer-events: none; position: absolute; transition: ${transition};`;
+      items[next].style.cssText = `--ac: ${acValues[next]}; transform: ${tx(0)}; opacity: 1; pointer-events: auto; position: absolute; transition: ${transition};`;
+
+      setTimeout(() => {
+        items[prev].classList.remove('active');
+        items[prev].style.cssText = `--ac: ${acValues[prev]};`;
+        items[next].classList.add('active');
+        items[next].style.cssText = `--ac: ${acValues[next]};`;
+
+        dotsEl.children[prev].classList.remove('active');
+        dotsEl.children[next].classList.add('active');
+
+        current   = next;
+        animating = false;
+      }, 360);
+    }
   }
 
   window.statsNav = function (dir) {
     const next = (current + dir + items.length) % items.length;
     goTo(next, dir);
   };
-})();
-
-// ── NETWORK SIDE CANVASES ──
-(function () {
-  function initNet(canvasEl, side) {
-    const canvas = canvasEl;
-    const ctx    = canvas.getContext('2d');
-    let W, H;
-
-    function resize() {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = rect.height || 160;
-      canvas.style.height = H + 'px';
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // ── nodes
-    const NODE_COUNT = 9;
-    const nodes = Array.from({ length: NODE_COUNT }, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r:  1.5 + Math.random() * 1.5,
-      pulse: Math.random() * Math.PI * 2,
-    }));
-
-    const LINK_DIST = 90;
-    const isLight = () => document.documentElement.getAttribute('data-theme') === 'light';
-
-    function getColor(alpha) {
-      return isLight()
-        ? `rgba(0,150,100,${alpha})`
-        : `rgba(0,255,135,${alpha})`;
-    }
-
-    // fade mask: left canvas fades right→transparent, right canvas fades left→transparent
-    function applyFade() {
-      const grad = ctx.createLinearGradient(
-        side === 'left' ? 0 : W, 0,
-        side === 'left' ? W : 0, 0
-      );
-      grad.addColorStop(0,    'rgba(0,0,0,1)');
-      grad.addColorStop(0.55, 'rgba(0,0,0,0.6)');
-      grad.addColorStop(1,    'rgba(0,0,0,0)');
-      ctx.globalCompositeOperation = 'destination-in';
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, W, H);
-      ctx.globalCompositeOperation = 'source-over';
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-
-      // ── move nodes
-      nodes.forEach(n => {
-        n.x += n.vx; n.y += n.vy;
-        n.pulse += 0.03;
-        if (n.x < 0 || n.x > W) n.vx *= -1;
-        if (n.y < 0 || n.y > H) n.vy *= -1;
-      });
-
-      // ── draw links
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i], b = nodes[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < LINK_DIST) {
-            const alpha = (1 - dist / LINK_DIST) * 0.55;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = getColor(alpha);
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-
-            // ── travelling data packet along the link
-            const t = (Date.now() % 2000) / 2000;
-            const px = a.x + (b.x - a.x) * t;
-            const py = a.y + (b.y - a.y) * t;
-            ctx.beginPath();
-            ctx.arc(px, py, 1.2, 0, Math.PI * 2);
-            ctx.fillStyle = getColor(0.9);
-            ctx.fill();
-          }
-        }
-      }
-
-      // ── draw nodes
-      nodes.forEach(n => {
-        const glow = 0.5 + 0.5 * Math.sin(n.pulse);
-        // outer ring
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r + 2 * glow, 0, Math.PI * 2);
-        ctx.fillStyle = getColor(0.08 * glow);
-        ctx.fill();
-        // core
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = getColor(0.8 + 0.2 * glow);
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = getColor(1);
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      });
-
-      applyFade();
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-  }
-
-  // wait for DOM
-  const left  = document.getElementById('netLeft');
-  const right = document.getElementById('netRight');
-  if (left)  initNet(left,  'left');
-  if (right) initNet(right, 'right');
 })();

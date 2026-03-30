@@ -1480,15 +1480,15 @@ section { padding: 88px 0; }
   position: relative;
 }
 
-/* Hide the flex row behaviour of stats-inner when in carousel mode */
+
 .stats-inner.stats-carousel {
   flex: 1;
   overflow: hidden;
   position: relative;
-  min-height: 140px; /* prevent collapse during transition */
+  min-height: 140px; 
 }
 
-/* Each sitem is absolutely stacked, only the active one shows */
+
 .stats-inner.stats-carousel .sitem {
   position: absolute;
   inset: 0;
@@ -1497,7 +1497,7 @@ section { padding: 88px 0; }
   pointer-events: none;
   transform: translateX(40px);
   transition: opacity 0.35s ease, transform 0.35s ease;
-  /* remove the divider line that only makes sense in row layout */
+
 }
 .stats-inner.stats-carousel .sitem::after { display: none; }
 
@@ -1505,7 +1505,7 @@ section { padding: 88px 0; }
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0);
-  position: relative; /* active item takes up space */
+  position: relative; 
 }
 
 /* slide-in from left */
@@ -1561,7 +1561,7 @@ section { padding: 88px 0; }
   flex: 1;
   overflow: hidden;
   position: relative;
-  min-height: 160px; /* increase this if content gets cut off */
+  min-height: 160px;
 }
 .stats-inner.stats-carousel .sitem {
   position: absolute;
@@ -1571,7 +1571,7 @@ section { padding: 88px 0; }
   pointer-events: none;
   transform: translateX(40px);
   transition: opacity 0.35s ease, transform 0.35s ease;
-  display: flex; /* keep flex column layout */
+  display: flex; 
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -1581,7 +1581,7 @@ section { padding: 88px 0; }
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0);
-  position: absolute; /* keep absolute — height comes from parent */
+  position: absolute; 
 }
 
 /* ── CAROUSEL WRAPPER ── */
@@ -1592,7 +1592,7 @@ section { padding: 88px 0; }
   position: relative;
 }
 
-/* ── LAPTOP/TABLET: center the sitem with side shades ── */
+/* ── LAPTOP/TABLET ── */
 @media (min-width: 768px) {
   .stats-carousel-wrapper {
     position: relative;
@@ -1642,16 +1642,19 @@ section { padding: 88px 0; }
   }
 }
 
-/* ── PHONE: full width, no side shades ── */
 @media (max-width: 767px) {
-  .sitem{
+  .sitem {
     border: none;
   }
+
   .stats-carousel-wrapper::before,
   .stats-carousel-wrapper::after {
     display: none;
   }
-  .net-canvas, .net-canvas--left, .net-canvas--right {
+
+  .net-canvas,
+  .net-canvas--left,
+  .net-canvas--right {
     display: none;
   }
 
@@ -1669,7 +1672,7 @@ section { padding: 88px 0; }
     height: 100% !important;
     opacity: 0;
     pointer-events: none;
-    transform: translateX(40px) !important;
+    transform: translateX(100%) !important;
     transition: opacity 0.35s ease, transform 0.35s ease;
     display: flex;
     flex-direction: column;
@@ -1683,6 +1686,40 @@ section { padding: 88px 0; }
     pointer-events: auto;
     transform: translateX(0) !important;
     position: absolute !important;
+  }
+
+  /* ── slide entry positions ── */
+  .stats-inner.stats-carousel .sitem.sitem-enter-right {
+    transform: translateX(100%) !important;
+    opacity: 0 !important;
+    transition: none !important;
+  }
+
+  .stats-inner.stats-carousel .sitem.sitem-enter-left {
+    transform: translateX(-100%) !important;
+    opacity: 0 !important;
+    transition: none !important;
+  }
+
+  /* ── slide exit positions ── */
+  .stats-inner.stats-carousel .sitem.sitem-exit-right {
+    transform: translateX(100%) !important;
+    opacity: 0 !important;
+    transition: opacity 0.35s ease, transform 0.35s ease !important;
+  }
+
+  .stats-inner.stats-carousel .sitem.sitem-exit-left {
+    transform: translateX(-100%) !important;
+    opacity: 0 !important;
+    transition: opacity 0.35s ease, transform 0.35s ease !important;
+  }
+
+  /* ── sliding into center ── */
+  .stats-inner.stats-carousel .sitem.sitem-sliding {
+    transform: translateX(0px) !important;
+    opacity: 1 !important;
+    transition: opacity 0.35s ease, transform 0.35s ease !important;
+    pointer-events: auto;
   }
 }
 /* ════════════════════════════════════════════════════════
@@ -1877,10 +1914,10 @@ section { padding: 88px 0; }
     rgba(237, 238, 237, 0.9) 0%, 
     rgba(231, 255, 239, 0.8) 100%);
  
-  border-bottom: 1px solid rgb(2, 69, 2);
+  border-bottom: 1px solid var(--teal);
   border-right: 1px solid var(--life-gold);
   border-top: 1px solid var(--teal);
-  border-left: 1px solid rgb(135, 27, 135);
+  border-left: 1px solid var(--life-gold);
   box-shadow: 0px 3px 20px black;
 }
 
@@ -1895,7 +1932,7 @@ section { padding: 88px 0; }
   gap: 50px;
 }
 
-/* Alien symbol */
+/* symbol */
 .eco-symbol {
   flex-shrink: 0;
   display: inline-block;
