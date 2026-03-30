@@ -309,9 +309,9 @@
             </div>
 
             <div class="intro-btns fu d4">
-                <a href="#courses" class="btn-p">Explore Gallery</a>
-                <a href="#about" class="btn-g">Read My Story</a>
-              </div>
+              <a href="#courses" class="btn-p">Explore Gallery</a>
+              <a href="#about" class="btn-g">Read My Story</a>
+            </div>
           </div>
 
           <!-- RIGHT -->
@@ -420,10 +420,9 @@
       </section>
 
       <!-- Stats Strip -->
+
       <div class="stats-strip" id="strip">
         <div class="hud-corner tl"></div>
-        <div class="hud-corner tr"></div>
-        <div class="hud-corner bl"></div>
         <div class="hud-corner br"></div>
 
         <div class="hud-header">
@@ -432,76 +431,120 @@
           <span class="hud-ping">LIFEFORM:<span>█</span> CONFIRMED</span>
         </div>
 
-        <div class="stats-inner">
-          <div class="sitem" style="--ac: #00ffe1">
-            <div class="sitem-accent"></div>
-            <div class="sitem-idx">01</div>
-            <div class="sitem-bars">
-              <span></span><span></span><span></span><span></span>
+        <div class="stats-carousel-wrapper">
+          <canvas class="net-canvas net-canvas--left" id="netLeft"></canvas>
+          <canvas class="net-canvas net-canvas--right" id="netRight"></canvas>
+          <!-- LEFT ARROW -->
+          <button
+            class="carousel-btn carousel-btn--left"
+            onclick="statsNav(-1)"
+            aria-label="Previous stat"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="square"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <div class="stats-inner stats-carousel">
+            <div class="sitem" style="--ac: #00ffe1">
+              <div class="sitem-accent"></div>
+              <div class="sitem-idx">01</div>
+              <div class="sitem-bars">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="snum" data-val="100%">100%</div>
+              <div class="slbl">Pure Intent</div>
+              <div class="ssub">no algorithm for this feeling</div>
+              <div class="sitem-dot"></div>
             </div>
-            <div class="snum" data-val="100%">100%</div>
-            <div class="slbl">Pure Intent</div>
-            <div class="ssub">no algorithm for this feeling</div>
-            <div class="sitem-dot"></div>
+
+            <div class="sitem" style="--ac: #7f5af0">
+              <div class="sitem-accent"></div>
+              <div class="sitem-idx">02</div>
+              <div class="sitem-bars">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="snum" data-val="2+">4+</div>
+              <div class="slbl">Free Courses</div>
+              <div class="ssub">& slowly growing</div>
+              <div class="sitem-dot"></div>
+            </div>
+
+            <div class="sitem" style="--ac: var(--muted)">
+              <div class="sitem-accent"></div>
+              <div class="sitem-idx">03</div>
+              <div class="sitem-bars">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="snum" data-val="36+">~37</div>
+              <div class="slbl">Still Compiling</div>
+              <div class="ssub">no final version. ever.</div>
+              <div class="sitem-dot"></div>
+            </div>
+
+            <div class="sitem" style="--ac: var(--life-gold)">
+              <div class="sitem-accent"></div>
+              <div class="sitem-idx">04</div>
+              <div class="sitem-bars">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="snum" data-val="11">11</div>
+              <div class="slbl">
+                My Best Project
+                <span style="font-size: clamp(7px, 0.3vw, 10px)">(my son)</span>
+              </div>
+              <div class="ssub">no deploy beats this one</div>
+              <div class="sitem-dot"></div>
+            </div>
+
+            <div class="sitem" style="--ac: var(--moss)">
+              <div class="sitem-accent"></div>
+              <div class="sitem-idx">05</div>
+              <div class="sitem-bars">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="snum" data-val="∞">∞</div>
+              <div class="slbl">Still Growing</div>
+              <div class="ssub">roots deeper than any code</div>
+              <div class="sitem-dot"></div>
+            </div>
           </div>
 
-          <div class="sitem" style="--ac: #7f5af0">
-            <div class="sitem-accent"></div>
-            <div class="sitem-idx">02</div>
-            <div class="sitem-bars">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="snum" data-val="2+">4+</div>
-            <div class="slbl">Free Courses</div>
-            <div class="ssub">& slowing growing</div>
-            <div class="sitem-dot"></div>
-          </div>
-
-          <div class="sitem" style="--ac: var(--muted)">
-            <div class="sitem-accent"></div>
-            <div class="sitem-idx">03</div>
-            <div class="sitem-bars">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="snum" data-val="36+">~37</div>
-            <div class="slbl">Still Compiling</div>
-            <div class="ssub">no final version. ever.</div>
-            <div class="sitem-dot"></div>
-          </div>
-          <!--#f4aeae-->
-          <div class="sitem" style="--ac: var(--life-gold)">
-            <div class="sitem-accent"></div>
-            <div class="sitem-idx">04</div>
-            <div class="sitem-bars">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="snum" data-val="11">11</div>
-            <div class="slbl">
-              My Best Project
-              <span style="font-size: clamp(7px, 0.3vw, 10px)">(my son)</span>
-            </div>
-            <div class="ssub">no deploy beats this one</div>
-            <div class="sitem-dot"></div>
-          </div>
-
-          <div class="sitem" style="--ac: var(--moss)">
-            <div class="sitem-accent"></div>
-            <div class="sitem-idx">05</div>
-            <div class="sitem-bars">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="snum" data-val="∞">∞</div>
-            <div class="slbl">Still Growing</div>
-            <div class="ssub">roots deeper than any code</div>
-            <div class="sitem-dot"></div>
-          </div>
+          <!-- RIGHT ARROW -->
+          <button
+            class="carousel-btn carousel-btn--right"
+            onclick="statsNav(1)"
+            aria-label="Next stat"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="square"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
         </div>
-      </div>
 
+        <!-- Dot indicators -->
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
       <!-- ╔══ LIFE ══╗ -->
 
       <section id="life">
-    <!--  <div class="hex-grid-bg"></div>-->
+        <!--  <div class="hex-grid-bg"></div>-->
         <div class="life-scanline"></div>
 
         <div class="wrap">
@@ -636,39 +679,83 @@
               </p>
             </div>
           </div>
-
           <div class="eco-box">
-            <div class="eco-bg-orb"></div>
-            <div class="eco-art">
-              &#32;________________________<br />
-              / &nbsp;E C O &nbsp;M E R G E &nbsp;. &nbsp;\<br />
-              |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
-              |&nbsp;[TECH] + [NATURE]&nbsp;&nbsp;&nbsp;&nbsp;|<br />
-              |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
-              [LIFE]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
-              |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
-              |&nbsp;grow . code . share &nbsp;|<br />
-              \________________________/<br />
-              &#32;. * . seeds . * . roots
-            </div>
-            <div class="eco-content">
-              <h3 class="eco-title">
-                ECO <span class="ac">MERGE</span> is Growing
-              </h3>
-              <p class="eco-p">
-                My next project brings everything together — gardening guides,
-                eco-friendly living, home cooking with homegrown ingredients,
-                and some tutorials. One living, breathing website.
-              </p>
-              <p class="eco-p">
-                People say personal websites are useless. I say: let me prove
-                that they can be awesome<span style="color: var(--teal)"
-                  >(ಡ‸ಡ)</span
-                >.
-              </p>
-              <div class="eco-badge">
-                <div class="badge-dot"></div>
-                PLANTING NOW — LAUNCHING WHEN IT'S READY
+            <!-- Main content -->
+            <div class="eco-inner">
+              <div class="eco-symbol">
+                <svg viewBox="0 0 120 120" width="120" height="120">
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="55"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="0.5"
+                    opacity="0.3"
+                  />
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="45"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="0.5"
+                    opacity="0.5"
+                  />
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="35"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="0.5"
+                    opacity="0.7"
+                  />
+                  <path
+                    d="M 60 25 L 60 95 M 25 60 L 95 60"
+                    stroke="currentColor"
+                    stroke-width="0.5"
+                    opacity="0.4"
+                  />
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="8"
+                    fill="currentColor"
+                    opacity="0.8"
+                  />
+                  <text
+                    x="60"
+                    y="65"
+                    font-size="6"
+                    text-anchor="middle"
+                    fill="currentColor"
+                    opacity="0.9"
+                  >
+                    ECO
+                  </text>
+                </svg>
+              </div>
+
+              <div class="eco-content">
+                <h3 class="eco-title">
+                  ECO <span class="ac">MERGE</span> is Growing
+                </h3>
+                <p class="eco-p">
+                  My next project brings everything together — gardening guides,
+                  eco-friendly living, home cooking with homegrown ingredients,
+                  and some tutorials. One living, breathing website.
+                </p>
+                <p class="eco-p">
+                  People say personal websites are useless. I say: let me prove
+                  that they can be awesome<span style="color: var(--teal)"
+                    >(ಡ‸ಡ)</span
+                  >.
+                </p>
+                <div class="eco-badge">
+                  <div class="badge-dot"></div>
+                  PLANTING NOW — LAUNCHING WHEN IT'S READY
+                </div>
               </div>
             </div>
           </div>
