@@ -635,3 +635,257 @@ document.addEventListener('DOMContentLoaded', initEcoNetwork);
     goTo(next, dir);
   };
 })();
+
+const cells = [
+  { tag:"GARDEN", title:"Seedling Lab",     hue:"#00ff87", pattern:"hex",     img:"https://i.ibb.co/fGNcPh6G/papaya-tree.jpg" },
+  { tag:"CODE",   title:"Debug Session",    hue:"#7f5af0", pattern:"dots",    img:"https://i.ibb.co/WNBM4kFp/pumpkin.jpg" },
+  { tag:"LIFE",   title:"Soil Layers",      hue:"#00ffe1", pattern:"wave",    img:"https://i.ibb.co/RkGHJWxt/red-flowers.jpg" },
+  { tag:"TEACH",  title:"Root Systems",     hue:"#00ff87", pattern:"grid",    img:"https://i.ibb.co/tkCgc6T/IMG-20260406-120418.jpg" },
+  { tag:"GROW",   title:"Compost Loop",     hue:"#7f5af0", pattern:"cross",   img:"https://i.ibb.co/yFCCL2qQ/IMG-20260406-120408.jpg" },
+  { tag:"CODE",   title:"Late Night Build", hue:"#00ffe1", pattern:"circuit", img:"https://i.ibb.co/nsBv73Qj/photo-2026-04-06-12-02-30.jpg" },
+  { tag:"HOME",   title:"Homeschool Hours", hue:"#7f5af0", pattern:"hex",     img:"https://i.ibb.co/8Dn2WWz4/photo-2026-04-06-12-02-27.jpg" },
+  { tag:"GARDEN", title:"Propagation",      hue:"#00ff87", pattern:"dots",    img:"https://i.ibb.co/rGqsY2WL/photo-2026-04-06-12-02-19.jpg" },
+  { tag:"COOK",   title:"Harvest Plate",    hue:"#ffaa00", pattern:"wave",    img:"https://i.ibb.co/275MM4Z6/photo-2026-04-06-12-01-56.jpg" },
+  { tag:"LOG",    title:"Node Entry",       hue:"#00ffe1", pattern:"grid",    img:"https://i.ibb.co/zWjQTC0G/photo-2026-04-06-12-01-45.jpg" },
+  { tag:"GROW",   title:"Seed Archive",     hue:"#00ff87", pattern:"cross",   img:"https://i.ibb.co/27d0bLDT/photo-2026-04-06-12-01-10.jpg" },
+  { tag:"LIFE",   title:"Garden at Dusk",   hue:"#7f5af0", pattern:"circuit", img:"https://i.ibb.co/qLZ6mWB9/photo-2026-04-06-12-00-56.jpg" },
+  { tag:"CODE",   title:"Deploy Day",       hue:"#00ffe1", pattern:"hex",     img:"https://i.ibb.co/DHVgpDKH/photo-2026-04-06-12-00-45.jpg" },
+  { tag:"TEACH",  title:"Study Loop",       hue:"#ffaa00", pattern:"dots",    img:"https://i.ibb.co/pvZ7CSXG/photo-2026-04-06-12-00-42.jpg" },
+  { tag:"COOK",   title:"From The Garden",  hue:"#00ff87", pattern:"wave",    img:"images/soil.jpg" },
+  { tag:"HOME",   title:"Son's Discovery",  hue:"#7f5af0", pattern:"grid",    img:"images/soil.jpg" },
+];
+
+  const spans = [
+    "1/5,1/3",
+    "5/8,1/2",
+    "8/10,1/2",
+    "10/13,1/3",
+    "5/7,2/3",
+    "7/10,2/4",
+    "1/4,3/5",
+    "4/7,3/4",
+    "10/12,3/4",
+    "12/13,3/5",
+    "4/6,4/5",
+    "6/10,4/6",
+    "10/12,4/5",
+    "1/4,5/6",
+    "4/6,5/6",
+    "10/13,5/6",
+  ];
+
+  function drawPat(canvas, type, hue) {
+    const ctx = canvas.getContext("2d");
+    const w = (canvas.width = canvas.offsetWidth || 800);
+    const h = (canvas.height = canvas.offsetHeight || 400);
+    ctx.clearRect(0, 0, w, h);
+    ctx.strokeStyle = hue;
+    ctx.fillStyle = hue;
+    ctx.lineWidth = 0.7;
+    ctx.globalAlpha = 0.18;
+    if (type === "hex") {
+      const r = 16;
+      for (let row = -1; row < h / 28 + 1; row++)
+        for (let col = -1; col < w / 28 + 1; col++) {
+          const cx = col * 24 + (row % 2) * 12,
+            cy = row * 28;
+          ctx.beginPath();
+          for (let i = 0; i < 6; i++)
+            ctx.lineTo(
+              cx + r * Math.cos((Math.PI / 3) * i - Math.PI / 6),
+              cy + r * Math.sin((Math.PI / 3) * i - Math.PI / 6),
+            );
+          ctx.closePath();
+          ctx.stroke();
+        }
+    } else if (type === "dots") {
+      for (let y = 0; y < h + 10; y += 18)
+        for (let x = 0; x < w + 10; x += 18) {
+          ctx.beginPath();
+          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+    } else if (type === "wave") {
+      for (let y = 0; y < h + 20; y += 14) {
+        ctx.beginPath();
+        for (let x = 0; x <= w; x += 4)
+          ctx.lineTo(x, y + Math.sin(x * 0.15) * 6);
+        ctx.stroke();
+      }
+    } else if (type === "grid") {
+      for (let x = 0; x <= w; x += 22) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+      }
+      for (let y = 0; y <= h; y += 22) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+    } else if (type === "cross") {
+      for (let y = 0; y < h + 20; y += 26)
+        for (let x = 0; x < w + 20; x += 26) {
+          ctx.beginPath();
+          ctx.moveTo(x - 7, y);
+          ctx.lineTo(x + 7, y);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(x, y - 7);
+          ctx.lineTo(x, y + 7);
+          ctx.stroke();
+        }
+    } else if (type === "circuit") {
+      for (let y = 0; y < h; y += 32)
+        for (let x = 0; x < w; x += 32) {
+          const r = Math.random();
+          ctx.beginPath();
+          if (r < 0.33) {
+            ctx.moveTo(x, y + 16);
+            ctx.lineTo(x + 16, y + 16);
+            ctx.lineTo(x + 16, y);
+          } else if (r < 0.66) {
+            ctx.moveTo(x + 16, y);
+            ctx.lineTo(x + 16, y + 16);
+            ctx.lineTo(x + 32, y + 16);
+          } else {
+            ctx.moveTo(x, y + 16);
+            ctx.lineTo(x + 16, y + 16);
+            ctx.lineTo(x + 16, y + 32);
+          }
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(x + 16, y + 16, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  const grid = document.getElementById("galGrid");
+  let currentIdx = 0;
+
+  cells.forEach((d, i) => {
+    const [col, row] = spans[i].split(",");
+    const cell = document.createElement("div");
+    cell.className = "gal-cell";
+    cell.style.gridColumn = col;
+    cell.style.gridRow = row;
+    cell.dataset.idx = i;
+
+    cell.innerHTML = `
+    <div class="cell-bg" style="background:radial-gradient(ellipse at center,${d.hue}08,transparent 70%)">
+      <canvas style="width:100%;height:100%;position:absolute;inset:0;"></canvas>
+    </div>
+    <div class="cell-scan"></div>
+    <div class="cell-overlay">
+      <div class="cell-tag">${d.tag}</div>
+      <div class="cell-title">${d.title}</div>
+    </div>
+    <div class="cell-corner tl"></div>
+    <div class="cell-corner br"></div>
+    <div class="cell-id">${String(i + 1).padStart(2, "0")}</div>
+    <div class="cell-zoom-icon">⊕</div>
+  `;
+
+    grid.appendChild(cell);
+
+    requestAnimationFrame(() => {
+      const cv = cell.querySelector("canvas");
+      cv.width = cell.offsetWidth;
+      cv.height = cell.offsetHeight;
+      drawPat(cv, d.pattern, d.hue);
+    });
+
+    cell.addEventListener("click", () => openLightbox(i));
+  });
+
+  // dots
+  const dotsEl = document.getElementById("stripDots");
+  [...Array(5)].forEach((_, i) => {
+    const d = document.createElement("div");
+    d.className = "strip-dot" + (i === 0 ? " active" : "");
+    dotsEl.appendChild(d);
+  });
+  setInterval(() => {
+    document
+      .querySelectorAll(".strip-dot")
+      .forEach((el, j) =>
+        el.classList.toggle("active", j === Math.floor(Date.now() / 1000) % 5),
+      );
+  }, 1000);
+
+  // LIGHTBOX
+  const backdrop = document.getElementById("lbBackdrop");
+  const lbTag = document.getElementById("lbTag");
+  const lbMeta = document.getElementById("lbMeta");
+  const lbTitle = document.getElementById("lbTitle");
+  const lbCanvas = document.getElementById("lbCanvas");
+  const lbImgWrap = document.getElementById("lbImgWrap");
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    updateLightbox();
+    backdrop.classList.add("open");
+  }
+
+  function closeLightbox() {
+    backdrop.classList.remove("open");
+  }
+
+function updateLightbox() {
+  const d = cells[currentIdx];
+  lbTag.textContent  = d.tag;
+  lbTitle.textContent = d.title;
+  lbMeta.textContent = `NODE:${String(currentIdx+1).padStart(2,"0")} // SECTOR:${d.tag}`;
+
+  // remove previous image and hide canvas
+  const oldImg = lbImgWrap.querySelector("img");
+  if (oldImg) oldImg.remove();
+  lbCanvas.style.display = "none";
+
+  if (d.img) {
+    // show real image
+    const img = document.createElement("img");
+    img.src = d.img;
+    img.alt = d.title;
+    img.style.cssText = "max-width:100%;max-height:70vh;object-fit:contain;display:block;position:relative;z-index:1;";
+    lbImgWrap.appendChild(img);
+  } else {
+    // fallback: show canvas pattern
+    lbCanvas.style.display = "block";
+    requestAnimationFrame(() => {
+      lbCanvas.width  = lbImgWrap.offsetWidth  || 800;
+      lbCanvas.height = lbImgWrap.offsetHeight || 400;
+      drawPat(lbCanvas, d.pattern, d.hue);
+    });
+  }
+}
+
+  document
+    .getElementById("lbCloseBtn")
+    .addEventListener("click", closeLightbox);
+
+  // click outside the box closes it
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeLightbox();
+  });
+
+  // keyboard ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+
+  // prev / next
+  document.getElementById("lbPrev").addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIdx = (currentIdx - 1 + cells.length) % cells.length;
+    updateLightbox();
+  });
+  document.getElementById("lbNext").addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIdx = (currentIdx + 1) % cells.length;
+    updateLightbox();
+  });

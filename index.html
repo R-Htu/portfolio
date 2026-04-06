@@ -309,7 +309,7 @@
             </div>
 
             <div class="intro-btns fu d4">
-              <a href="#courses" class="btn-p">Explore Gallery</a>
+              <a href="#gallery" class="btn-p">Explore Gallery</a>
               <a href="#about" class="btn-g">Read My Story</a>
             </div>
           </div>
@@ -756,6 +756,58 @@
                   <div class="badge-dot"></div>
                   PLANTING NOW — LAUNCHING WHEN IT'S READY
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ╔══ GALLERY ══╗ -->
+      <section id="gallery">
+        <div class="gal-root">
+          <div class="gal-header">
+            <div>
+              <div class="gal-tag">// gallery_module.load // SECTOR:VISUAL</div>
+              <h2 class="gal-title">VISUAL <span class="ac">ARCHIVE</span></h2>
+            </div>
+            <div class="gal-meta">
+              UID: R-HTU-001<br />NODES: 16 ACTIVE<br />FEED: LIVE
+            </div>
+            <div class="gal-line"></div>
+            <div class="scan-bar"></div>
+          </div>
+
+          <div class="gal-grid" id="galGrid"></div>
+
+          <div class="gal-strip">
+            <div class="strip-data">
+              TRANSMISSION:OPEN // SECTOR:GALLERY // LOOP:∞
+            </div>
+            <div class="strip-dots" id="stripDots"></div>
+            <div class="strip-data">SIGNAL:STRONG // NODES:ONLINE</div>
+          </div>
+        </div>
+
+        <!-- LIGHTBOX -->
+        <div class="lb-backdrop" id="lbBackdrop">
+          <div class="lb-box" id="lbBox">
+            <div class="lb-corner tl"></div>
+            <div class="lb-corner br"></div>
+            <div class="lb-scan"></div>
+            <div class="lb-topbar">
+              <div style="display: flex; align-items: center; gap: 10px">
+                <div class="lb-tag-pill" id="lbTag">TAG</div>
+                <div class="lb-meta" id="lbMeta">NODE:01 // SECTOR:GARDEN</div>
+              </div>
+              <button class="lb-close" id="lbCloseBtn">[ ✕ CLOSE ]</button>
+            </div>
+            <div class="lb-img-wrap" id="lbImgWrap">
+              <canvas class="lb-pattern" id="lbCanvas"></canvas>
+            </div>
+            <div class="lb-footer">
+              <div class="lb-title-text" id="lbTitle">Title</div>
+              <div class="lb-nav">
+                <button class="lb-nav-btn" id="lbPrev">‹</button>
+                <button class="lb-nav-btn" id="lbNext">›</button>
               </div>
             </div>
           </div>
